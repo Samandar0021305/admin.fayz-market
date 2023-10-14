@@ -82,7 +82,7 @@
  import CustomPagesCreate from "@/components/custom/pages/create.vue"
  import { useStore } from 'vuex';
 
- import RichTextEditor from "@/components/richtexteditor/index.vue"
+//  import RichTextEditor from "@/components/richtexteditor/index.vue"
  
  const store = useStore()
  

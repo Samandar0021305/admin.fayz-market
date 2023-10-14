@@ -1,4 +1,10 @@
 <template>
+  
+</template>
+<script setup>
+
+</script>
+<!-- <template>
   <ejs-richtexteditor ref="defaultRTE" :height="200">
       <p>The Rich Text Editor component is WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.Users can format their content using standard toolbar commands.</p>
   </ejs-richtexteditor>
@@ -31,7 +37,7 @@
 @import "../../../node_modules/@syncfusion/ej2-splitbuttons/styles/bootstrap5.css";
 @import "../../../node_modules/@syncfusion/ej2-vue-richtexteditor/styles/bootstrap5.css";
 </style> 
-
+ -->
 
 
 
