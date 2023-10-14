@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+
+@import "helper", "transition", "layouts", "custom", "components", "pages",
+  "form", "cards", "popup";
+
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", "Montserrat", sans-serif;
+}
+body {
+  margin: 0;
+  background: $body-bg;
+}
+
+ul {
+  @include free-ul;
+}
+
+.container {
+  width: 100%;
+  max-width: 1248px;
+  padding: 0 16px;
+  margin: 0 auto;
+  z-index: 2;
+
+  @include devices(lg) {
+    max-width: 1140px;
+  }
+
+  @include devices(md) {
+    max-width: 960px;
+  }
+}
+
+.wrapper {
+  overflow: hidden;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 100;
+}

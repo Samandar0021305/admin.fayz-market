@@ -1,0 +1,247 @@
+.statistics {
+  padding: 30px;
+  overflow-y: scroll;
+  &-header {
+    margin-bottom: 50px;
+    @include flex-between;
+    h2 {
+      margin: 0;
+      display: inline-flex;
+      padding: 0 24px 14px 0;
+      border-bottom: 1px solid rgba(89, 100, 118, 0.16);
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 40px;
+      color: $black1;
+    }
+
+    &-functions {
+      @include flex-between;
+      .el-tabs {
+        margin-right: 30px;
+        &__header {
+          margin: 0;
+        }
+        &__nav-wrap {
+          &::after {
+            display: none;
+          }
+        }
+        &__active-bar {
+          display: none;
+        }
+        &__item {
+          padding: 8px;
+          margin: 0 8px;
+          border: 1px solid transparent;
+          text-align: center;
+          border-radius: 6px;
+          transition: $transition;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 16px;
+          color: $black1;
+
+          &.is-top {
+            &:nth-child(2) {
+              padding-left: 8px;
+              margin-left: 0;
+            }
+            &:last-child {
+              padding-right: 8px;
+            }
+          }
+          &.is-active {
+            border-color: #fcbe00;
+          }
+        }
+      }
+
+      & > button {
+        width: 32px;
+        height: 32px;
+        padding: 4px;
+        background: transparent;
+        border: none;
+        outline: none;
+        transform: rotate(90deg);
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-body {
+    ul {
+      @include flex-between;
+      li {
+        flex: 1;
+        height: 97px;
+        border-radius: 6px;
+        background: $white;
+        box-shadow: 0px 5px 20px 0px rgba(176, 195, 211, 0.16);
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        padding: 19px 24px;
+        &:nth-child(2) {
+          margin: 0 30px;
+        }
+
+        span.title {
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 18px;
+          color: $gray1;
+          display: block;
+          margin-bottom: 15px;
+        }
+        .content {
+          @include flex;
+        }
+        strong {
+          font-size: 24px;
+          font-weight: 600;
+          line-height: 32px;
+          color: $black1;
+          margin-right: 35px;
+        }
+        small {
+        }
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        color: #07c180;
+      }
+    }
+    .orders {
+      @include flex-between;
+      height: 107px;
+      padding: 19px 24px;
+      border-radius: 6px;
+      background: $white;
+      box-shadow: 0px 5px 20px 0px rgba(176, 195, 211, 0.16);
+      margin-top: 20px;
+      & > button {
+        width: 64px;
+        min-width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        border: 1px solid rgba(148, 146, 146, 0.4);
+        background: transparent;
+        outline: none;
+
+        .svg{
+          svg{
+            path{
+              fill: $black1;
+            }
+          }
+        }
+      }
+      span {
+        flex: 1;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 30px;
+        opacity: 0.8;
+        color: $black1;
+        margin: 0 20px;
+      }
+      strong.big {
+        font-size: 21px;
+        font-weight: 600;
+        line-height: 32px;
+        opacity: 0.8;
+        color: $black1;
+      }
+    }
+    &-top{
+      background-color: $white;
+      margin-top: 20px;
+      box-shadow: 0px 5px 20px 0px rgba(176, 195, 211, 0.16);
+      border-radius: 6px;
+      &-title{
+        padding: 20px;
+       h5{
+        margin: 0;
+        color:$gray3;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+       }
+      }
+      &-body{
+        &-list{
+          span{
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+            h6{
+              color: $black3;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 400;
+              margin: 0;
+              margin-left: 5px;
+            }
+          }
+          .el-col{
+            p{
+              color: $gray3;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 600;
+            }
+             &:nth-child(2n+1){
+              border-top: 1px solid #E3EEF6;
+              padding: 5px 20px;
+             }
+             &:nth-child(2n){
+              padding: 0 10px;
+             }
+             &:nth-last-child(2){
+              border-bottom: 1px solid #E3EEF6;
+             }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width:970px) {
+   .orders{
+    span{
+      font-size: 16px !important;
+    }
+   }
+}
+
+@media screen and (max-width:450px) {
+   
+    .statistics{
+      .el-col{
+        padding: 0 !important;
+        .orders{
+          padding: 0 7px !important;
+          width: 100%;
+          span{
+            font-size: 12px !important;
+            line-height: 18px;
+          }
+          strong.big{
+            font-size: 14px !important;
+          }
+          button{
+           width: 44px;
+           height: 44px;
+           min-width: 44px;
+           @include flex();
+           justify-content: center;       
+          }
+        }
+      }
+    }
+}

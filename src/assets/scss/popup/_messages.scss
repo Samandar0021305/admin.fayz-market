@@ -1,0 +1,81 @@
+.messages{
+  width: 600px;
+  &--box{
+   border-right: 1.5px solid rgba(175, 167, 167, 1);
+ p{
+   color: $gray3;
+   font-size: 16px;
+   font-weight: 400;
+   opacity: 0.5;
+   display: inline;
+   margin-left: 5px;
+ }   
+ h4{
+   color: $gray3;
+  font-size: 18px;
+   margin: 7px 0;
+  font-weight: 500;
+  opacity: 0.8;
+}
+ &--item{
+   display: flex;
+   align-items: center;
+   margin: 0;
+   padding: 0;
+ }
+}
+&--list{
+   display: flex;
+   align-items: center;
+   p{
+       margin: 0;
+       padding: 0; 
+       margin-left: 5px;
+       color:$gray3;
+       font-size: 16px;
+       font-style: normal;
+       font-weight: 400;
+   }
+}
+&--demo{
+   padding-left: 40px;
+   h6{
+       color: $gray1;
+       font-size: 16px;
+       font-style: normal;
+       font-weight: 400;
+       margin: 0;
+       padding: 0;
+       margin: 10px 0;
+   }
+}
+
+&--send{
+  border-radius: 10px;
+  border: 1px solid rgba(36, 36, 36, 0.10);
+  background: transparent;
+  margin-top: 40px;
+  @include flex-between();
+   span{
+     padding: 5px;
+     display: flex;
+     input{
+        border: none;
+        margin-left: 10px;
+        outline: none;
+       background-color: transparent;
+        color: $gray1;
+     }
+   }
+   button{
+     color: white;
+     border-radius: 0px 10px 10px 0px;
+     border: 1px solid rgba(36, 36, 36, 0.10);
+     background: $orange;
+     cursor: pointer;
+     width: 126px;
+     height: 54px;
+   }
+}
+
+}

@@ -1,0 +1,102 @@
+@import "clients", "vacancy", "messages","payments";
+
+.el-dialog {
+  border-radius: 10px;
+  background-color: $white;
+  padding: 30px 40px;
+  max-width: 1000px;
+  width: 600px;
+
+  &.is-draggable .el-dialog__header {
+    margin: 0;
+    padding: 0;
+
+    .popup-header {
+      @include flex-between;
+      .status {
+        span {
+          display: inline-block;
+          padding: 5px 14px;
+          background-color: $menu-btn-primary;
+          color: white;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 18px;
+          border-radius: 30px;
+          min-width: 70px;
+        }
+      }
+      .links {
+        @include flex-between;
+        button {
+          border: none;
+          outline: none;
+          background: transparent;
+          cursor: pointer;
+
+          &:not(:first-child) {
+            margin-left: 30px;
+          }
+          .svg {
+            svg path {
+              stroke: $gray1;
+            }
+          }
+          &:last-child {
+            .svg {
+              svg {
+                transform: rotate(90deg);
+                path {
+                  fill: $gray1;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &__body {
+    padding: 30px 0;
+    h2 {
+      font-size: 40px;
+      font-weight: 600;
+      color: $black1;
+      margin: 0 0 30px;
+    }
+
+    .right-line {
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 40%;
+        right: 0;
+        width: 1px;
+        height: 130%;
+        transform: translateY(-50%);
+        background: linear-gradient(transparent, $black1, transparent);
+        opacity: 0.5;
+
+        @include devices(md) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width:650px) {
+   .el-dialog{
+    width: 90%;
+   }
+}
+
+@media screen and (max-width:400px) {
+    .el-dialog{
+      h2{
+        font-size: 20px;
+      }
+    }
+}
