@@ -28,10 +28,8 @@ const auth = {
           try {
             // const res = await this.$axios.post("token/", form);
             const res = await ConfigApi.post("token/",form)
-            console.log(res);
            if(res){
             const { access } = res ;
-            console.log(res);
   
             const token = access;
   
@@ -40,19 +38,16 @@ const auth = {
               token_split &&
               token_split.length > 1 &&
               JSON.parse(window.atob(token_split[1]));
-            console.log(fields_str);
   
             commit("setState", { key: "access", value: token });
             commit("setState", { key: "role", value: 1 });
-            console.log(token);
   
             resolve({
               status: true,
               error: null,
             });
            }
-          } catch (e) {
-            console.log(e);
+          } catch  {
             reject({
               status: false,
               error: e,

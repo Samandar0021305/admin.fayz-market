@@ -71,7 +71,7 @@ const brands = computed(()=>{
     return  store.getters.brandsDataList.list
 })
 
-console.log(brands);
+
 
 
 onMounted(() => {
@@ -155,7 +155,7 @@ const formSize = ref('100%')
     await formEl.validate((valid, fields) => {
        if (valid) {
          
-         console.log(ruleForm);
+         
          const res = store.dispatch("productUpdite",{id:route.params.id,form:ruleForm})
          ElMessage.success("ma'lumot yangilandi")
        } else {

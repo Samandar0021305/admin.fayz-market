@@ -16,7 +16,6 @@
         const reder = new FileReader();
         reder.onload=(e)=>{
          upload.value = e.target.result
-         console.log(upload.value);
          appContext.emit(upload.value)
         }
         reder.readAsDataURL(value1)

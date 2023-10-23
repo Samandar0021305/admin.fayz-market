@@ -11,7 +11,7 @@
         <el-scrollbar>
           <ul class="notification-list">
             <li v-for="(value,index) in data.data">
-              <span class="title"> {{ value.user.firstname }} </span>
+              <span class="title"> {{ value?.user?.firstname }} </span>
               <span class="description">
                 {{ value.comment }}
               </span>
@@ -68,7 +68,6 @@ const fetchingMessage = async()=>{
   onMounted(()=>{
     fetchingMessage().then(res=>{
       data.data = res.results.reverse().splice(0,3)
-      console.log(data.data)
     })
   })
 

@@ -127,6 +127,8 @@ const submitForm = async (formEl) => {
       }
     } else {
       console.log("error submit!", fields);
+      ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+  
     }
   });
 };

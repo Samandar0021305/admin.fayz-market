@@ -2,7 +2,8 @@
   <div class="sider" :class="{ 'sider--collapse': isCollapse }">
     <div class="sider-header">
       <div class="logo">
-        <svgicon name="logo" />
+        <!-- <img src="../../assets/images/fayzmarket.jpg" alt=""> -->
+        <svgicon name="logo" /> 
       </div>
     </div>
     <el-scrollbar height="100%">
@@ -41,7 +42,7 @@
         </template>
       </el-menu>
     </el-scrollbar>
-
+<!-- 
     <div class="sider-footer">
       <router-link to="/cabinet/admin/setting">
         <div class="setting">
@@ -49,7 +50,7 @@
           <span>Settings</span>
         </div>
       </router-link>
-    </div>
+    </div> -->
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <CustomPages   title="Buyurtmalar" createPath="/cabinet/admin/orders/create">
+  <CustomPages v-loading="loading"  title="Buyurtmalar" createPath="/cabinet/admin/orders/create">
     <template #default>
       <CustomTable
         :deleteItems="deleteItems"
@@ -84,7 +84,7 @@ import Pagination from "@/components/pagination.vue";
 
 const detail = ref(null);
 const data = reactive({current:false})
-
+const loading = ref(true);
 const store = useStore();
 
 const lists = computed(()=>{
@@ -95,7 +95,11 @@ const count = computed(()=>{
   return store.getters.getOrderAdminList.count;
 })
 onMounted(()=>{
-  store.dispatch("fetchOrderAdmin",{ params: { limit: 0, offset: 0 } })
+  Promise.all([
+    store.dispatch("fetchOrderAdmin",{ params: { limit: 0, offset: 0 } })
+  ]).finally(()=>{
+    loading.value = false;
+  })
 })
 
 

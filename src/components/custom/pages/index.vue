@@ -17,8 +17,7 @@
           <div class="create" v-show="createPath">
             <el-button type="primary" @click="$router.push(createPath)">
               <svgicon name="add-plus" />
-              <span v-if="locale != 'uz'">{{ $t("add") }} {{ title }}</span>
-              <span v-else> {{ title }} {{ $t("add") }}</span>
+              <span>{{ title }} qo'shish</span>
             </el-button>
           </div>
         </div>
@@ -88,7 +87,6 @@ const isOpenFilter = ref(true);
 const emit = defineEmits();
 
 watch(search, (value) => {
-  console.log(value);
   emit("onSearch", search.value || "");
 });
 </script>

@@ -17,4 +17,8 @@ export const upditeProduct = async(id,data)=>
   await ConfigApi.patch(productsEndpoints.list + `${id}/`,data)
 
   export const getByIdProduct = async(id)=>
-   await ConfigApi.get(productsEndpoints.list + `${id}/`)
+   await ConfigApi.get(productsEndpoints.list + `${id}/`);
+
+
+export const createImageProduct = async(data)=>
+  await ConfigApi.post("product-images/",data)

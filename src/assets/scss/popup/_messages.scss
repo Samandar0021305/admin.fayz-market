@@ -16,6 +16,7 @@
    margin: 7px 0;
   font-weight: 500;
   opacity: 0.8;
+  text-overflow: clip !important;
 }
  &--item{
    display: flex;

@@ -18,16 +18,16 @@ const orders = {
                 let res = await getOrder(params);
                 if(res){
                     
-                    // commit("setState",{key:"list",value:res.results});
-                    // commit("setState",{key:"count",value:res.count});
+                    commit("setState",{key:"list",value:res.results});
+                    commit("setState",{key:"count",value:res.count});
                     resolve({status:true});
-                    console.log(res);
                 }
                 }catch(e){
                   reject({
                     status: false,
                     error: e,
                 });
+                
             }  
         })
     }

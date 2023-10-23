@@ -1,5 +1,5 @@
 <template>
-  <CustomPages title="Brendlar" createPath="/cabinet/admin/brend/create">
+  <CustomPages v-loading="loading" title="Brendlar" createPath="/cabinet/admin/brend/create">
     <template #default>
       <CustomTable
         :deleteItems="deleteItems"
@@ -66,7 +66,7 @@ import { useStore } from "vuex";
 import { useRouter } from 'vue-router';
 const store = useStore();
 const router = useRouter()
-
+const loading = ref(true)
 const detail = ref(null);
 
 const onDeleting = ref(false);
@@ -82,7 +82,11 @@ const count = computed(()=>{
 
 
 onMounted(() => {
-  store.dispatch("fetchBrands", { params: { limit: 0, offset: 0 } });
+  Promise.all([
+    store.dispatch("fetchBrands", { params: { limit: 0, offset: 0 } })
+  ]).finally(()=>{
+    loading.value = false
+  })
 });
 
 

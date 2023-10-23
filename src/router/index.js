@@ -165,12 +165,12 @@ const routes = [
         path: "/cabinet/admin/admin/:id",
         name: "Admin Update",
         component: AdminUpdate,
-      },
-      {
-        path: "/cabinet/admin/setting",
-        name: "Settings",
-        component: Settings,
-      },
+      }
+      // {
+      //   path: "/cabinet/admin/setting",
+      //   name: "Settings",
+      //   component: Settings,
+      // },
     ],
   },
   {

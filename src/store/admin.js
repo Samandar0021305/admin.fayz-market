@@ -24,7 +24,6 @@ import {getAdmin ,deleteAdmin ,  createAdmin ,updateAdmin, getbyidAdmin} from ".
                 commit("SETADMIN",{key:"list",value:res.results})
                 commit("SETADMIN",{key:"count",value:res.count})
                 resolve({status:true});
-                console.log(res);
              }
              }catch(e){
              reject({status:false})
@@ -60,9 +59,9 @@ import {getAdmin ,deleteAdmin ,  createAdmin ,updateAdmin, getbyidAdmin} from ".
            return new Promise(async(resolve,reject)=>{
             try{
               const res = await createAdmin(data);
-              console.log(res);
-            }catch(e){
-              console.log(e);
+              resolve({status:true});
+            }catch{
+              reject({status:false})
             }
            })
          },

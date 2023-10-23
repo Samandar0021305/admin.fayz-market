@@ -16,7 +16,7 @@
               
               <el-col :md="8" :sm="12" :xs="20">
                 <el-form-item label="telefon raqami" prop="phone_number">
-                  <el-input v-model="form.phone_number" placeholder="telefon raqami" />
+                  <el-input v-model="form.phone_number" placeholder="telefon raqami" :mask="9989" />
                 </el-form-item>
               </el-col>
               

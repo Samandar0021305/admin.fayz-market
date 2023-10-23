@@ -106,8 +106,7 @@
           color: $black1;
           margin-right: 35px;
         }
-        small {
-        }
+       
         font-size: 14px;
         font-weight: 600;
         line-height: 18px;
@@ -219,14 +218,34 @@
    }
 }
 
-@media screen and (max-width:450px) {
-   
+@media screen and (max-width:560px) {
     .statistics{
+      &-header{
+        flex-direction: column;
+        align-items: start;
+        &-functions{
+         margin-top: 10px;
+         .el-tabs__item{
+          // margin: 0;
+          padding: 5px;
+         }
+        }
+      }
+    }
+}
+
+@media screen and (max-width:450px) {
+    .statistics{
+      &-header{
+        h2{
+          font-size: 18px;
+        }
+      }
       .el-col{
         padding: 0 !important;
         .orders{
           padding: 0 7px !important;
-          width: 100%;
+          width: 77%;
           span{
             font-size: 12px !important;
             line-height: 18px;

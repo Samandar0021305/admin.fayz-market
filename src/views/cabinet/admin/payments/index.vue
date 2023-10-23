@@ -1,7 +1,7 @@
 
 
 <template>
-    <CustomPages title="To'lovlar" >
+    <CustomPages v-loading="loading" title="To'lovlar" >
       <template #default>
         <CustomTable
         :deleteItems="deleteItems"
@@ -68,7 +68,7 @@ import { useStore } from "vuex";
 const store = useStore();
 const router = useRouter()
 const detail = ref(null);
-
+const loading = ref(true)
 const onDeleting = ref(false);
 const deleteItems = ref([]);
 const list = reactive([
@@ -115,8 +115,11 @@ const count = computed(()=>{
 })
 
 onMounted(() => {
-  store.dispatch("fectPayments", { params: { limit: 0, offset: 0 } });
-  
+  Promise.all([
+    store.dispatch("fectPayments", { params: { limit: 0, offset: 0 } })
+  ]).finally(()=>{
+    loading.value= false;
+  })
 });
 
 

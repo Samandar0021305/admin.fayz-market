@@ -29,7 +29,6 @@ import { getBrands , createBrands, deleteBrands ,upditeBrands,getbyBrands} from 
                     resolve({status:true,data:res})
                   
                 }catch(r){
-                    console.log(e);
                     reject({status:false})
                 }   
             }) 
@@ -41,7 +40,6 @@ import { getBrands , createBrands, deleteBrands ,upditeBrands,getbyBrands} from 
                      const data = upditeBrands(id,form)
                      resolve({status:true})
                 }catch(err){
-                    console.log(err);
                     reject({status:false})
                 }
               })          
@@ -79,15 +77,13 @@ import { getBrands , createBrands, deleteBrands ,upditeBrands,getbyBrands} from 
           return new Promise(async (resolve,reject)=>{
             try{
                const res = await createBrands(form);
-               if(res){
-                resolve({
-                    status:true
-                   })
-               }
+               resolve({status:true})
              }catch(c){
                reject({
                 status:false
                })
+               ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+
             }
           })   
         }

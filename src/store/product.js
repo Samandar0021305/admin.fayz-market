@@ -38,12 +38,12 @@ const product = {
   async productUpdite(_,{id,form}){
      return new Promise(async(resolve,reject)=>{
       try{ 
-        // console.log(id);
+        
          const res = await upditeProduct(id,form)
          resolve({status:true})
       }catch(e){
         reject({status:false})
-        console.log(e);
+        
       }
      })
   },
@@ -57,17 +57,19 @@ const product = {
           }
       })
   },
-  async productCreate(_,ruleForm){
+  async productCreate(_,formData){
      return new Promise(async (resolve,reject)=>{
         try{
           
-          const data = await createProduct(ruleForm)
+          const data = await createProduct(formData)
           if(data){
             resolve({status:false});
           }
 
         }catch(er){
           reject({status:false})
+          ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+
         }
      })
   },
@@ -75,12 +77,10 @@ const product = {
         return new Promise(async (resolve,reject)=>{
             try{
                 let res = await getProduct(params);
-                if(res){
-                    commit("SETPRODUCT",{key:"list",value:res.results});
-                    commit("SETPRODUCT",{key:"count",value:res.count});
-                    resolve({status:true});
-                    console.log(res);
-                }
+                commit("SETPRODUCT",{key:"list",value:res.results});
+                commit("SETPRODUCT",{key:"count",value:res.count});
+                resolve({status:true});
+                
                 }catch(e){
                   reject({
                     status: false,

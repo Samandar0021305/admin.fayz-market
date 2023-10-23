@@ -1,5 +1,5 @@
 <template>
-    <CustomPages title="Admin" createPath="/cabinet/admin/admin/create">
+    <CustomPages v-loading="loading" title="Admin" createPath="/cabinet/admin/admin/create">
       <template #default>
         <CustomTable
         :deleteItems="deleteItems"
@@ -71,6 +71,8 @@ const store = useStore();
 
 const detail = ref(null);
 
+const loading = ref(true)
+
 const lists = computed(()=>{
   return store.getters.getAdminsList.list
 })
@@ -80,8 +82,9 @@ const count = computed(()=>{
 })
 
 onMounted(()=>{
-  store.dispatch("fetchAdmin",{ params: { limit: 0, offset: 0 } })
-  console.log(lists);
+  Promise.all([store.dispatch("fetchAdmin",{ params: { limit: 0, offset: 0 } })]).finally(()=>{
+    loading.value = false;
+  })
 })
 
 const onDeleting = ref(false);

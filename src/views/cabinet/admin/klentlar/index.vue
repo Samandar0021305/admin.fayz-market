@@ -1,5 +1,5 @@
 <template>
-  <CustomPages title="Mijozlar" createPath="/cabinet/admin/klentlar/create">
+  <CustomPages v-loading="loading" title="Mijozlar" createPath="/cabinet/admin/klentlar/create">
     <template #default>
       <CustomTable
         :deleteItems="deleteItems"
@@ -88,6 +88,7 @@ const store = useStore();
 const router = useRouter();
 
 const detail = ref(null);
+const loading = ref(true)
 
 const lists = computed(()=>{
   return store.getters.getUsersList.list
@@ -98,8 +99,11 @@ const count = computed(()=>{
 })
 
 onMounted(()=>{
-  store.dispatch("fetchUsers",{})
-  console.log(lists);
+  Promise.all([
+    store.dispatch("fetchUsers",{})
+  ]).finally(()=>{
+    loading.value = false;
+  })
 })
 
 

@@ -21,7 +21,6 @@ const payments = {
             return new Promise(async(resolve,reject)=>{
                 try{
                     const res = await getPayments()
-                    console.log(res,"orer");
                     if(res){
                         commit("SETPAYMENTS",{key:"list",value:res.results})
                         commit("SETPAYMENTS",{key:"count",value:res?.results?.length})
@@ -56,7 +55,7 @@ const payments = {
           return new Promise(async(resolve,reject)=>{
             try{
               const res = await updatePayments(id,data)
-              console.log(data);
+            
               resolve({status:true})
             }catch(e){
               resolve({status:false})

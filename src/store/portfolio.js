@@ -17,7 +17,6 @@ const portfolio = {
           const { data, status } = res;
 
           if (status == 200) {
-            // console.log(data);
             commit("setState", {key: "count", value: data && data.count})
             commit("setState", {key: "list", value: data && data.results})
 

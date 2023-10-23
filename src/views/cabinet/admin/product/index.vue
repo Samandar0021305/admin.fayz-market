@@ -1,5 +1,5 @@
 <template>
-  <CustomPages title="Mahsulotlar" createPath="/cabinet/admin/product/create">
+  <CustomPages v-loading="loading" title="Mahsulotlar" createPath="/cabinet/admin/product/create">
     <template #default>
       <CustomTable
         :deleteItems="deleteItems"
@@ -35,7 +35,7 @@
               <span v-if="item.brand">{{ item.brand.name}}</span>
             </td>
             <td @click="detail = {status: item}">
-              <span v-if="item.category">{{ item.category.name | "new"}} </span>
+              <span v-if="item.category">{{ item.category.name}} </span>
             </td>
             <td width="84px">
               <ul class="table--action">
@@ -47,30 +47,7 @@
                  </li>
               </ul>
             </td>
-            <!-- <td width="84px">
-              <el-popover placement="bottom" width="120" trigger="click">
-                <template #reference>
-                  <svgicon class="dots" name="dots-horizontal" />
-                </template>
-                <div class="table-action">
-                  <button
-                    class="edit"
-                    @click="handleClick(item.id)"
-                  >
-                    <svgicon name="edit" />
-                    <span>Edit</span>
-                  </button>
-                  <button class="delete" @click="onDelete(item.id)">
-                    <svgicon name="delete" />
-                    <span>Delete</span>
-                  </button>
-                  <button class="view" @click="detail = {status: item}">
-                    <svgicon name="eye" />
-                    <span>View</span>
-                  </button>
-                </div>
-              </el-popover>
-            </td> -->
+           
           </tr>
         </template>
         <template #empty v-else>
@@ -90,7 +67,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed ,onMounted} from "vue";
+import { ref, computed ,onMounted} from "vue";
 
 import PopopClients from "@/components/popup/clients/index.vue";
 
@@ -103,7 +80,7 @@ import { useRouter } from 'vue-router';
 const store = useStore();
 
 const detail = ref(null);
-
+const loading = ref(true);
 const lists = computed(()=>{
   return  store.state.product.data.list
 })
@@ -112,7 +89,12 @@ const count = computed(()=>{
 })
 
 onMounted(() => {
-  store.dispatch("fetchProduct", { params: { limit: 0, offset: 0 } });
+  Promise.all([
+    store.dispatch("fetchProduct", { params: { limit: 0, offset: 0 } })
+  ]).finally(()=>{
+    loading.value = false;
+     console.log(lists);
+  })
 });
 
 const onDeleting = ref(false);

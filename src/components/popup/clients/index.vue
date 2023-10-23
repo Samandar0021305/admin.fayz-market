@@ -42,7 +42,7 @@
         <el-row :gutter="60">
           <el-col :md="10" :sm="10" :xs="20" class="right-line">
             <div class="image">
-              <img :src="current.images[0]" :alt="item.title" />
+              <img :src="current.images[0].photo" :alt="item.title" />
             </div>
             
             <a :href="item.url" target="_blank">{{item.url}}</a>
@@ -54,7 +54,7 @@
                 <h4>{{current?.name}}</h4>
                 <ul>
                   <li style="margin-bottom: 2px;">
-                    brand nomi: {{current?.brend?.name}}
+                    brand nomi: {{current?.brand?.name}}
                   </li>
                   <li style="margin-bottom: 2px;">
                      narxi: {{ current?.price }} so'm
@@ -89,7 +89,7 @@ const { item } = toRefs(props);
 let current =  reactive({});
 watch(item,(newValue,oldValue)=>{
   current = newValue.status
-   console.log(newValue.status);
+  console.log(item);
 })
 
 </script>

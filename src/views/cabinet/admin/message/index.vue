@@ -1,5 +1,5 @@
 <template>
-    <CustomPages   title="Xabarlar" >
+    <CustomPages v-loading="loading"  title="Xabarlar" >
       <template #default>
         <CustomTable
           :deleteItems="deleteItems"
@@ -64,8 +64,9 @@
   import Pagination from "@/components/pagination.vue"; 
   
   const lists = reactive({value:""})
-  
+  const loading = ref(true)
   const count = ref("")
+
 
   const fetchingMessage = async()=>{
     return await getMessage()
@@ -75,6 +76,7 @@
     fetchingMessage().then(res=>{
       count.value = res.count
       lists.value = res.results
+      loading.value = false
     })
   })
   

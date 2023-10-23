@@ -1,5 +1,5 @@
 <template>
-  <CustomPages title="Kategoriyalar" createPath="/cabinet/admin/category/create" >
+  <CustomPages  v-loading="loading" title="Kategoriyalar" createPath="/cabinet/admin/category/create" >
     <template #default>
       <CustomTable
         :deleteItems="deleteItems"
@@ -64,6 +64,8 @@ import { useRouter } from 'vue-router';
 const store = useStore();
 const router = useRouter();
 
+const loading = ref(true);
+
 
 const lists = computed(()=>{
   return  store.getters.categoryDataList.list
@@ -74,7 +76,9 @@ const count = computed(()=>{
 })
 
 onMounted(() => {
-  store.dispatch("fetchCategory", { params: { limit: 0, offset: 0 } });
+  Promise.all([store.dispatch("fetchCategory", { params: { limit: 0, offset: 0 } })]).finally(()=>{
+    loading.value = false
+  })
 });
 
 

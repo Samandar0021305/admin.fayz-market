@@ -10,9 +10,6 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
-    "@syncfusion/ej2-inputs": "^23.1.40",
-    "@syncfusion/ej2-vue-buttons": "^23.1.39",
-    "@syncfusion/ej2-vue-richtexteditor": "^23.1.40",
     "apexcharts": "^3.42.0",
     "axios": "^1.5.0",
     "element-plus": "^2.3.9",

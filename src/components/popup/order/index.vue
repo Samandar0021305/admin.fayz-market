@@ -99,7 +99,6 @@
   let current=  reactive({});
   watch(item,(newValue,oldValue)=>{
     current = newValue.status
-     console.log(newValue.status);
   })
   
   

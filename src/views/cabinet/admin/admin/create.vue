@@ -200,7 +200,7 @@
     if (!formEl) return;
     await formEl.validate(async(valid, fields) => {
       if (valid) {
-        console.log(form);
+        
         const {status} = await store.dispatch("AdminCreate",form)
         if(!status){
           ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
@@ -208,7 +208,9 @@
         ElMessage.success("ma'lumot qo'shildi")
         }
       } else {
-        console.log("error submit!", fields);
+
+        ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+
       }
     });
   };

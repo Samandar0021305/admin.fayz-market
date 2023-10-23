@@ -17,6 +17,7 @@
     line-height: 30px;
     color: $black1;
     margin: 0 0 20px;
+    text-overflow: clip !important;
   }
   small,
   a {
@@ -42,6 +43,7 @@
       font-size: 18px;
       margin: 0;
       padding: 0;
+      
     }
     span{
       font-size: 12px !important;

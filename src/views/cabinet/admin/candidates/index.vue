@@ -1,5 +1,5 @@
 <template>
-  <CustomPages title="Candidates" createPath="/cabinet/admin/candidates/create">
+  <CustomPages v-loading="loading" title="Candidates" createPath="/cabinet/admin/candidates/create">
     <template #default>
       <CustomTable
         :deleteItems="deleteItems"
@@ -117,6 +117,7 @@ import { useStore } from "vuex";
 const store = useStore();
 
 const detail = ref(null);
+const loading = ref(true)
 
 const onDeleting = ref(false);
 const deleteItems = ref([]);
@@ -171,21 +172,7 @@ const onDelete = async (id) => {
       type: "success",
     });
 
-    // const { status, error } = await this.$store.dispatch(
-    //   "functions/deleteItems",
-    //   {
-    //     items,
-    //     api: "/user-study",
-    //   }
-    // );
-    // if (status) {
-    //   await this.FetchData();
-    //   this.$message.success(this.$t("MessageSuccess"));
-    //   deleteItems.value = [];
-    //   onDeleting.value = false;
-    // } else {
-    //   this.$message.error(error);
-    // }
+    
   } catch (error) {
     console.log(error);
   }

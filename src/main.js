@@ -5,16 +5,8 @@ import router from "./router";
 import store from "./store";
 import i18n from "./locale";
 
-// import {registerLicense} from '@syncfusion/ej2-base';
-// import { RichTextEditorPlugin } from '@syncfusion/ej2-vue-richtexteditor';
-// registerLicense("Ngo9BigBOggjHTQxAR8/V1NHaF5cXmVCf1NpR2JGfV5yd0VDallXTnJaUiweQnxTdEZiWX5acHFQQGRZVEJ/Vw==");
 
-// import { ButtonPlugin } from '@syncfusion/ej2-vue-buttons';
 
-// import {ButtonPlugin} from "@syncfusion/ej2-vue-buttons"
-// import { FormValidator } from '@syncfusion/ej2-inputs';
-
-// import API from "./service";
 import ConfigApi from "./api/index";
 
 import ElementPlus from "element-plus";
@@ -36,8 +28,7 @@ app.use(store);
 app.use(i18n);
 app.use(ElementPlus);
 app.use(VueApexCharts);
-// app.use(RichTextEditorPlugin);
-// app.use(ButtonPlugin);
+
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component);

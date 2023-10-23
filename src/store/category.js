@@ -27,7 +27,7 @@ import { getCategories , createCategory , deleteCategory ,upditeCategory , getby
                     data:res
                   })
               }catch(r){
-                  console.log(e);
+                  reject({status:false})
               }   
           }) 
             
@@ -60,6 +60,7 @@ import { getCategories , createCategory , deleteCategory ,upditeCategory , getby
                     })
                    }
                 }catch(r){
+                  ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
                       reject({
                         status:false
                       })
@@ -73,7 +74,7 @@ import { getCategories , createCategory , deleteCategory ,upditeCategory , getby
                    const data = upditeCategory(id,form)
                    resolve({status:true})
               }catch(err){
-                  console.log(err);
+  
                   reject({status:false})
               }
             })          
