@@ -20,7 +20,7 @@ const payments = {
         async fectPayments({commit},{params}){
             return new Promise(async(resolve,reject)=>{
                 try{
-                    const res = await getPayments()
+                    const res = await getPayments(params)
                     if(res){
                         commit("SETPAYMENTS",{key:"list",value:res.results})
                         commit("SETPAYMENTS",{key:"count",value:res?.results?.length})

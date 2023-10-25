@@ -57,17 +57,23 @@
     </template>
     <template #footer>
       <div class="showcase">
-        <span>Showing 1 - 10 of 350</span>
+        <span v-if="count <= 10">{{$t("showing")}} 1 - {{ count }} {{$t("of")}} {{ count }}</span>
+        <span v-else>{{$t("showing")}} 1 - 10 {{$t("of")}} {{ count }}</span>
       </div>
+
       
-      <Pagination :limit="10" :count="count" :page="1" />
+      <Pagination :limit="params.limit"
+        :count="count"
+        :page="1"
+        @paginate="paginate"
+ />
     </template>
   </CustomPages>
   <PopopClients :item="detail" />
 </template>
 
 <script setup>
-import { ref, computed ,onMounted} from "vue";
+import { ref, computed ,onMounted,reactive} from "vue";
 
 import PopopClients from "@/components/popup/clients/index.vue";
 
@@ -81,6 +87,18 @@ const store = useStore();
 
 const detail = ref(null);
 const loading = ref(true);
+
+const paginate = async (page) => {
+  params.offset = (page - 1) * params.limit;
+  await getData();
+};
+
+const params = reactive({
+  limit: 10,
+  offset: 0,
+});
+
+
 const lists = computed(()=>{
   return  store.state.product.data.list
 })
@@ -88,13 +106,8 @@ const count = computed(()=>{
   return store.state.product.data.count
 })
 
-onMounted(() => {
-  Promise.all([
-    store.dispatch("fetchProduct", { params: { limit: 0, offset: 0 } })
-  ]).finally(()=>{
-    loading.value = false;
-     console.log(lists);
-  })
+onMounted(async() => {
+    await getData()
 });
 
 const onDeleting = ref(false);
@@ -123,6 +136,13 @@ const router = useRouter()
 const handleClick = (id)=>{
   router.push(`/cabinet/admin/product/${id}`)
 }
+
+const getData = async () => {
+  loading.value = true;
+  await store.dispatch("fetchProduct", { params: params });
+  loading.value = false;
+};
+
 
 </script>
 

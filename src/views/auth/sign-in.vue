@@ -1,7 +1,7 @@
 <template>
   <div class="signin">
     <div class="signin-header">
-      <strong>Sign in to <span>GreatSoft</span></strong>
+      <strong>Sign in to <span>FazyMarket</span></strong>
       <small>Please, enter your details</small>
     </div>
     <div class="signin-body">

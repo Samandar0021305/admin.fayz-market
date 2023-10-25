@@ -5,7 +5,7 @@ const categoryEndpoints = {
 }
 
 export const getCategories = async(params)=> 
-  await ConfigApi.get(categoryEndpoints.list)
+  await ConfigApi.get(categoryEndpoints.list,{params})
 
   export const createCategory = async(data)=>
    await ConfigApi.post(categoryEndpoints.list, data)

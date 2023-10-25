@@ -5,10 +5,4 @@ const orderEndpoints = {
 }
 
 export const getOrder = async (params) =>
-  await ConfigApi.get(orderEndpoints.list, {
-    params: {
-      page: 1,
-      pageSize: 10,
-      ...params,
-    },
-  });
+  await ConfigApi.get(orderEndpoints.list, {params});

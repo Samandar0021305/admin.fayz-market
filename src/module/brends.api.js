@@ -5,7 +5,7 @@ const brandsEndpoints = {
 }
 
 export const getBrands = async(params)=> 
-  await ConfigApi.get(brandsEndpoints.list)
+  await ConfigApi.get(brandsEndpoints.list,{params})
 
 
   export const createBrands = async(data)=>

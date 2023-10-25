@@ -79,7 +79,7 @@
 
 <script setup>
 import { computed, onMounted, ref } from "vue";
-import Charts from "@/components/chart/index.vue" 
+import Charts from "@/components/chart/index.vue";
 import { useStore } from "vuex";
 import { ElFormItem } from "element-plus";
 const activeDate = ref(1);
