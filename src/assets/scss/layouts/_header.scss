@@ -1,0 +1,126 @@
+.header {
+  height: 67px;
+  flex-shrink: 0;
+  background: $white;
+  box-shadow: 13px 4px 20px 0px rgba(7, 7, 54, 0.1);
+  @include flex-between;
+  padding: 0 40px;
+
+  .collapse {
+    display: flex;
+    .el-icon {
+      font-size: 24px;
+      cursor: pointer;
+      transition: $transition;
+      transform: rotatez(180deg);
+    }
+    .icons--collapse {
+      transform: rotatez(0deg);
+    }
+  }
+
+  &-functions {
+    .el-switch {
+      transform: scale(1.2);
+    }
+    .el-button {
+      width: 40px;
+      height: 40px;
+      margin: 0 0 0 30px;
+      padding: 0;
+      background-color: transparent;
+
+      img {
+        @include image;
+      }
+      .svg {
+        margin-right: 0;
+        svg path {
+          fill: $black1;
+        }
+      }
+      &.lang{
+        overflow: hidden;
+        span{
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+.el-button.func-btn {
+  width: 100%;
+  background: $white;
+  color: $gray1;
+  .svg {
+    margin-left: 10px;
+    transform: rotate(90deg);
+    path {
+      fill: $gray1;
+    }
+  }
+}
+
+ul.notification-list {
+  max-height: 200px;
+  // display: none !important;
+  li {
+    border-radius: 4px;
+    background: $white;
+    padding: 6px 12px;
+    margin: 0 0 6px;
+    box-shadow: 0px 5px 20px 0px rgba(176, 195, 211, 0.16);
+    cursor: pointer;
+
+    span {
+      display: block;
+      &.title {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0 0 8px;
+        color: $black1;
+      }
+      &.description {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 500;
+        color: $gray1;
+        @include splice(2);
+      }
+
+
+    }
+  }
+}
+.el-dropdown-menu.lang{
+  li{
+    @include flex;
+    
+    .image{
+      margin-right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      overflow: hidden;
+      img{
+        @include image;
+      }
+    }
+    .title{
+      font-size: 15px;
+      font-weight: 500;
+      color: $black1;
+    }
+  }
+}
+
+
+
+@media (max-width:400px){
+  .header{
+    padding: 0 30px;
+  }
+}

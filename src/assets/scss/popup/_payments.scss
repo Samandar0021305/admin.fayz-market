@@ -1,0 +1,26 @@
+.payments{
+    &--list{
+        li{
+            @include flex();
+            margin: 10px 0;
+            div:nth-child(2){
+              margin-left: 13px;
+            }
+            div:nth-child(1){
+             @include flex();
+             span{
+                margin-left: 3px;
+             }
+            }
+            
+            .icon{
+                @include flex();
+                
+            }
+        }
+    }
+    &--wrap{
+        @include flex-direction();
+        
+    }
+}

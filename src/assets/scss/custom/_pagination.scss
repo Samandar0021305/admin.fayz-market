@@ -1,0 +1,75 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+
+  &-limit {
+    margin-right: 12px;
+  }
+
+  &-controls {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    .pagination-item {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 24px;
+      color: $black1;
+      margin: 0 4px;
+      background: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: 0.2s;
+      padding: inherit;
+
+
+      .svg{
+        svg path{
+            fill: $black1;
+        }
+      }
+      &:first-child {
+        .svg {
+          transform: rotate(180deg);
+        }
+      }
+      &:first-child,
+      &:last-child {
+        @include flex;
+        width: auto;
+        &[disabled] {
+          cursor: auto;
+          color: #7D9EB5;
+  
+          svg path {
+            fill: #7D9EB5;
+          }
+        }
+      }
+
+
+      &.active {
+        color: #fff;
+        background: $button-primary;
+      }
+
+      @include devices(sm) {
+        width: 36px;
+        height: 36px;
+        border-radius: 4px;
+        font-size: 16px;
+        margin: 0 2px;
+      }
+    }
+  }
+
+  &-info {
+    margin-left: 12px;
+  }
+}

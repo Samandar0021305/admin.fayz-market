@@ -1,0 +1,55 @@
+.el-button {
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 6px;
+
+  .svg {
+    margin-right: 10px; 
+  }
+  span {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+  }
+ 
+  &--primary {
+    background-color: $button-primary !important;
+    border-color: $button-primary !important;
+    &:hover {
+      background-color: $button-primary !important;
+      border-color: $button-primary !important;
+    }
+ 
+    span { 
+      color: #fff;
+    }
+    .svg svg path {
+      stroke: #fff;
+    }
+  }
+
+}
+
+.btn{
+  &--cancel{
+    width: 111px;
+    border: 1px solid rgba(0, 0, 0, 0.40);
+    border-radius: 6px;
+    transition: background-color 0.4s ease-in-out;
+  }
+  &--info{
+    border-radius: 6px;
+    background-color: #EAEAEA;
+    width: 111px;
+    transition:background-color 0.4s ease-in-out;
+  }
+
+  &--info:hover{
+     background-color: $menu-btn-primary;
+     color: white;
+  }
+  &--cancel:hover{
+    background-color: $menu-btn-primary;
+     color: white;
+  }
+}

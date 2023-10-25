@@ -1,0 +1,17 @@
+@import "header", "sider";
+
+.wrapper {
+  display: flex;
+  height: 100vh;
+  max-width: 3200px;
+  max-height: 1600px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  &-inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease-in-out;
+  }
+}

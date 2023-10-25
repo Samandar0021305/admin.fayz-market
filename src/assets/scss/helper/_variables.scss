@@ -1,0 +1,70 @@
+:root {
+  --el-color-primary: #14156b;
+  --el-color-primary-light-3: rgb(20, 21, 107, 0.7);
+  --el-color-primary-light-5: rgb(20, 21, 107, 0.5);
+  --el-color-primary-light-7: rgb(20, 21, 107, 0.3);
+  --el-color-primary-light-8: rgb(20, 21, 107, 0.2);
+  --el-color-primary-light-9: rgb(20, 21, 107, 0.1);
+  .el-switch{
+    --el-switch-on-color: #eaeaea;
+    --el-switch-off-color: #2b2847;
+  }
+}
+body {
+  &.light {
+    --body-bg: #f4f4f4;
+    --white: #fff;
+    --gray1: #666;
+    --gray2: #eaeaea;
+    --menu-btn-primary: #323389;
+    --black1: #030235;
+    --button-primary: #14156b;
+    --blue: #0085FF;
+    --gray3:#242424; 
+    --filter: invert(11%) sepia(6%) saturate(23%) hue-rotate(340deg) brightness(101%) contrast(95%);
+    --black:#000;
+    --gray4:#5E5E5E;
+    --orange:#FF824B;
+    --black3:#223345;
+    --yellow:#262859;
+  }
+  &.dark {
+    --yellow:#F77F00;
+    --body-bg: #151d31;
+    --black:#fff;
+    --white: #283046;
+    --gray1: #fff;
+    --gray2: #283046;
+    --gray3:#fff;
+    --menu-btn-primary: rgb(255, 255, 255, 0.1);
+    --black1: #fff;
+    --blue: #0085FF;
+    --filter:invert(99%) sepia(81%) saturate(133%) hue-rotate(255deg) brightness(114%) contrast(100%);
+    --button-primary: #283046;
+    --el-color-white:#151d31; 
+    --gray4:#fff;
+    --orange:rgba(255,255,255,0.2);
+    --black3:#fff;
+  }
+}
+
+$body-bg: var(--body-bg);
+$white: var(--white);
+$gray1: var(--gray1);
+$gray2: var(--gray2);
+$menu-btn-primary: var(--menu-btn-primary);
+$black1: var(--black1);
+
+$blue: var(--blue);
+
+$gray3:var(--gray3);
+$black:var(--black);
+$transition: all 0.3s ease-in-out;
+// border-color
+$button-primary: var(--button-primary);
+$filter:var(--filter);
+$gray4:var(--gray4);
+$blue:var(--blue);
+$orange:var(--orange);
+$black3:var(--black3);
+$yellow:var(--yellow);

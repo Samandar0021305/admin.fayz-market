@@ -1,0 +1,20 @@
+.chart{
+    background-color: $white;
+    border-radius: 5px;
+    margin-top: 21px;
+    div{
+        padding: 10px;
+        .apexcharts-toolbar{
+            display: none;
+        }
+    }
+    &--title{
+        margin: 0;
+        padding: 0;
+        margin-left: 30px;
+        color:$gray3;
+        font-size: 18px;
+        font-weight: 700;
+        margin-top: 10px;
+    }
+}

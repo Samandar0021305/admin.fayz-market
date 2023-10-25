@@ -1,0 +1,300 @@
+.table {
+  background-color: $white !important;
+  border-radius: 10px;
+  overflow: hidden;
+  &--action{
+    display: flex;
+    align-items: center;
+    li{
+      width: 40px;
+      height: 40px;
+      margin: 0 5px;
+      @include flex-center();
+      border-radius: 50%;
+      cursor: pointer;
+      svg{
+        path{
+          fill: white;
+        }
+      }
+    }
+    li:nth-child(1){
+        background-color:#EC3D4A;
+    }
+    li:nth-child(2){
+      background-color:#2196F3;
+    }
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    input[type="checkbox"] {
+      outline: none;
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    thead {
+      padding: 0 16px;
+      tr {
+        width: 1%;
+        th {
+          color: #7D9EB5;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 18px;
+          padding: 41px 36px 21px;
+          text-align: start;
+          border-left: 1px solid #e3eef6;
+          border-bottom: 1px solid #e3eef6;
+
+          // &:first-child {
+          //   width: 50px;
+          //   padding-right: 16px;
+          //   border-left: none;
+          // }
+          &:nth-child(2){
+            // border-left: none;
+            // padding-left: 0;
+          }
+
+          &.nowrap {
+            white-space: nowrap;
+          }
+
+          span {
+            @include splice(1);
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        &:last-child {
+          td {
+            border-bottom: none;
+          }
+        }
+        td {
+          border-left: 1px solid #e3eef6;
+          border-bottom: 1px solid #e3eef6;
+          padding: 18px 36px;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 18px;
+          color: $black1;
+          text-align: start;
+
+          &.center{
+            text-align: center;
+          }
+
+          .image {
+            width: 192px;
+            height: 135px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #e3eef6;
+            img {
+              @include image;
+            }
+          }
+
+          span {
+            @include splice(1);
+             img{
+              display: flex;
+              width: 100%;
+             }
+            a {
+              text-decoration: none;
+              color: $blue;
+            }
+
+            &.status {
+              color: $gray1;
+              &.active {
+                color: #06f43b;
+              }
+            }
+            &.blue {
+              color: $blue;
+            }
+
+            &.splice-2 {
+              @include splice(2);
+            }
+          }
+
+          &.nowrap {
+            white-space: nowrap;
+          }
+         
+          .svg.dots {
+            cursor: pointer;
+            path {
+              fill: $black1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-action {
+    button {
+      border: none;
+      outline: none;
+      background: transparent;
+      display: flex;
+      padding: 7px 10px;
+      cursor: pointer;
+      width: calc(100% + 24px);
+      margin: 0 -12px;
+      transition: $transition;
+
+      .svg {
+        margin-right: 10px;
+      }
+      span {
+        color: #242424;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+      &:hover {
+        background-color: #dad8d8;
+      }
+    }
+  }
+  &-popup {
+    display: flex;
+    align-items: center;
+    max-width: 460px;
+    width: 100%;
+    border: 1px solid #d5d5d5;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 65px;
+    padding: 16px;
+    position: fixed;
+    z-index: 4;
+    bottom: 20px;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    & > .svg {
+      margin-right: 16px;
+      cursor: pointer;
+      svg {
+        width: 20px;
+        height: 20px;
+        fill: #cacaca;
+      }
+    }
+    & > span {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 18px;
+      color: #313131;
+      display: flex;
+      align-items: center;
+      small {
+        width: 33px;
+        height: 20px;
+        background: #e8e8e8;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 8px;
+      }
+    }
+    .el-button {
+      height: 42px;
+      margin-left: auto;
+      background: #ec3751;
+      border-radius: 20px;
+      padding: 6px 20px;
+      border: none;
+      outline: none;
+      .svg {
+        margin-right: 10px;
+        svg {
+          path {
+            stroke: white;
+            stroke-width: 2px;
+          }
+        }
+      }
+      span {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+        color: #fff;
+      }
+    }
+  }
+  &-empty {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .svg {
+      margin-bottom: 16px;
+      svg {
+        stroke: #938ca5;
+        width: 24px;
+        height: 24px;
+      }
+    }
+    span {
+      font-weight: 500;
+      font-size: 16px;
+      text-align: center;
+      color: #898989;
+    }
+    &-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: calc(100vh - 165px);
+      &-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      span {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 150%;
+        color: #313131;
+      }
+    }
+  }
+}
+
+
+.el-popover.el-popper {
+  min-width: 120px !important;
+  background-color: #e5e5e5;
+  padding: 6px 12px;
+}
+.el-popper[data-popper-placement^="bottom"] .el-popper__arrow::before {
+  background-color: #e5e5e5;
+}
+
+@media (max-width:800px){
+  .table{
+     overflow: auto;
+  }
+}
+
+@media (max-width:450px){
+  .table{
+    margin-right: 10px;
+  }
+}

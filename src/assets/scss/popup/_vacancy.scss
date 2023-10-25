@@ -1,0 +1,57 @@
+.vacancy-popup {
+  .image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+    img {
+      @include image;
+      object-fit: contain;
+    }
+  }
+  h4 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    color: $black1;
+    margin: 0 0 20px;
+    text-overflow: clip !important;
+  }
+  small,
+  a {
+    font-size: 20px;
+    font-weight: 500;
+    color: $blue;
+    text-decoration: none;
+  }
+  .content {
+    span {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 28px;
+      color: $gray1;
+    }
+  }
+}
+
+
+@media screen and (max-width:400px) {
+  .vacancy-popup{
+    h4{
+      font-size: 18px;
+      margin: 0;
+      padding: 0;
+      
+    }
+    span{
+      font-size: 12px !important;
+      ul{
+        li{
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
