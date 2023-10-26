@@ -53,8 +53,6 @@ function activeLangTab(e) {
 
 const formSize = ref('default')
 const ruleFormRef = ref()
-const upload = ref(null)
-
 
 const form = reactive({
  name:"",
@@ -82,10 +80,9 @@ const rules = reactive({
 
 const submitForm = async (formEl) => {
   if (!formEl) return
-  await formEl.validate((valid, fields) => {
+  await formEl.validate(async(valid, fields) => {
     if (valid) {
-      const res =  store.dispatch("OrderAdminCreate",{data:form})
-    
+      const res =  await store.dispatch("OrderAdminCreate",{data:form})
       ElMessage.success("ma'lumot qo'shildi")
     } else {
       console.log('error submit!', fields)

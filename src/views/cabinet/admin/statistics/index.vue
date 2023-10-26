@@ -1,7 +1,7 @@
 <template>
   <div v-loading="loading" class="statistics">
     <div class="statistics-header">
-      <h2>Statistics</h2>
+      <h2>statistika</h2>
       <div class="statistics-header-functions">
 
         <el-tabs
@@ -9,10 +9,10 @@
           class="demo-tabs"
           @tab-click="handleClick"
         >
-          <el-tab-pane label="This week" :name="1"></el-tab-pane>
-          <el-tab-pane label="Last week" :name="2"></el-tab-pane>
-          <el-tab-pane label="day" :name="3"></el-tab-pane>
-          <el-tab-pane label="year" :name="4"></el-tab-pane>
+          <el-tab-pane label="hafta" :name="1"></el-tab-pane>
+          <el-tab-pane label="oy" :name="2"></el-tab-pane>
+          <el-tab-pane label="kun" :name="3"></el-tab-pane>
+          <el-tab-pane label="yil" :name="4"></el-tab-pane>
         </el-tabs>
         <!-- <button>
           <svgicon name="dots-horizontal" />
@@ -81,7 +81,6 @@
 import { computed, onMounted, ref } from "vue";
 import Charts from "@/components/chart/index.vue";
 import { useStore } from "vuex";
-import { ElFormItem } from "element-plus";
 const activeDate = ref(1);
 const store = useStore();
 

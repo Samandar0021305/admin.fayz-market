@@ -70,6 +70,7 @@ export const OrderAdmin = {
               resolve({status:true}) 
          }catch(e){
           ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+          
           reject({status:false})
          }
       })

@@ -62,21 +62,17 @@ const product = {
         try{
           
           const data = await createProduct(formData)
-          if(data){
-            resolve({status:false});
-          }
-
+          resolve({status:false});
+          
         }catch(er){
           reject({status:false})
-          ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
-
         }
      })
   },
     async fetchProduct({ commit }, { params }) {
         return new Promise(async (resolve,reject)=>{
             try{
-                let res = await getProduct(params);
+                let res = await getProduct({params});
                 commit("SETPRODUCT",{key:"list",value:res.results});
                 commit("SETPRODUCT",{key:"count",value:res.count});
                 resolve({status:true});

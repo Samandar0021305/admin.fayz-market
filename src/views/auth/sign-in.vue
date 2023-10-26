@@ -1,8 +1,8 @@
 <template>
   <div class="signin">
     <div class="signin-header">
-      <strong>Sign in to <span>FazyMarket</span></strong>
-      <small>Please, enter your details</small>
+      <strong><span>FazyMarket</span> ga kirish </strong>
+      <small>Iltimos, maʼlumotlaringizni kiriting</small>
     </div>
     <div class="signin-body">
       <el-form
@@ -12,31 +12,31 @@
         :rules="rules"
         status-icon
       >
-        <el-form-item label="phone number" prop="phone_number">
+        <el-form-item label="telefon raqam" prop="telefon">
           <el-input
             autofocus
             @keypress.enter="submitForm(formRef)"
             v-model="form.phone_number"
-            placeholder="phone_number"
+            placeholder="telefon raqam kiriting"
           />
         </el-form-item>
-        <el-form-item label="Password" prop="password">
+        <el-form-item label="parol" prop="password">
           <el-input
             autofocus
             v-model="form.password"
             type="password"
             @keypress.enter="submitForm(formRef)"
-            placeholder="Password"
+            placeholder="parol kiriting"
             show-password
           />
         </el-form-item>
       </el-form>
       <el-button class="signin" type="primary" @click="submitForm(formRef)"
-        >Sign in</el-button
+        >Kirish</el-button
       >
     </div>
     <div class="signin-footer">
-      <span class="forgot"> Forgot password? </span>
+      <span class="forgot">parol esingizda yo'qmi?</span>
     </div>
   </div>
 </template>
@@ -61,14 +61,14 @@ const rules = reactive({
   phone_number: [
     {
       required: true,
-      message: "validatephone_number",
+      message: "telefon raqamingizni kiriting",
       trigger: "blur",
     },
   ],
   password: [
     {
       required: true,
-      message: "validatePassword",
+      message: "parol kiriting",
       trigger: "blur",
     },
   ],

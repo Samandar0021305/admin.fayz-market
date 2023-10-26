@@ -107,7 +107,7 @@ const deleteItems = ref([]);
 const onDelete = async (id) => {
   try {
       const {status} = await store.dispatch("categoryDelete",id)
-      store.dispatch("fetchCategory", { params: { limit: 0, offset: 0 } });
+      await getData();
      ElMessage.success("ma'lumot o'chirildi")
   } catch (error) {
     ElMessage.error("ma'lumot o'chirilmadi xatolik bor qaytadan urinib ko'ring")

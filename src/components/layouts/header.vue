@@ -27,7 +27,7 @@
           </el-button>
         </template>
         <el-button class="func-btn logout" @click="logout">
-          Logout
+          chiqish
           <svgicon name="export" />
         </el-button>
       </el-popover>

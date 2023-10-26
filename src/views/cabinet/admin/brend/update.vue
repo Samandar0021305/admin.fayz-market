@@ -14,7 +14,7 @@
              <el-form-item >
                <label class="upload" :style="{background: upload && `linear-gradient(0deg, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.70) 100%) , url(${upload}), lightgray 50% / cover no-repeat`}">
                     <svgicon :class="{filter: upload}" name="Upload"/>
-                    <p>Upload profile image here <br> (JPG, PNG)</p>
+                    <p>rasmni bu yerga yuklang <br> (JPG, PNG)</p>
                     <h6>Browse</h6>
                     <input type="file"  v-on:change="onChange">
                   </label>
@@ -59,10 +59,10 @@
 import CustomPagesUpdate from "@/components/custom/pages/update.vue";
 import { useStore } from 'vuex';
 import { computed, ref, reactive, onMounted } from 'vue';
-import { useRoute} from "vue-router"
+import { useRoute ,useRouter} from "vue-router"
 const store = useStore()
 const route = useRoute()
-
+const router = useRouter()
 const upload = ref(null)
 
 const formRef = ref();
@@ -126,14 +126,11 @@ const submitForm = async (formEl) => {
           dp.append(key,form[key]);
         }
        })
-      const {status} = await store.dispatch("upditeBrands",{id:route.params.id,form:dp})
-      if(!status){
-        ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
-      }else{
-      ElMessage.success("ma'lumot yangilandi")
-      }
+      const res = await store.dispatch("upditeBrands",{id:route.params.id,form:dp});
+      ElMessage.success("ma'lumot yangilandi");
+      router.push("/cabinet/admin/brend");
     } else {
-      console.log("error submit!", fields);
+      ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
     }
   });
 };

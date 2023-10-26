@@ -13,7 +13,7 @@
              <el-form-item prop="image">
                <label class="upload" :style="{background: upload && `linear-gradient(0deg, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.70) 100%) , url(${upload}), lightgray 50% / cover no-repeat`}">
                     <svgicon :class="{filter: upload}" name="Upload"/>
-                    <p>Upload profile image here <br> (JPG, PNG)</p>
+                    <p>rasmni bu yerga yuklang <br> (JPG, PNG)</p>
                     <h6>Browse</h6>
                     <input type="file"  v-on:change="onChange">
                   </label>
@@ -57,7 +57,9 @@
 import { ref, reactive } from "vue";
 import CustomPagesCreate from "@/components/custom/pages/create.vue";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 const store = useStore()
+const router  = useRouter()
 
 function activeLangTab(e){
   console.log(e);
@@ -65,7 +67,6 @@ function activeLangTab(e){
 
 
 const upload = ref(null)
-const activeLang = ref("uz");
 const formRef = ref();
 const form = reactive({
   name: "",
@@ -120,17 +121,15 @@ const submitForm = async (formEl) => {
         fd.append(key, form[key]);
       })
      
-    const {status} = await store.dispatch("createCategory" , fd)      
+    const res = await store.dispatch("createCategory" , fd)      
    
-    if(!status){
-      ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
-      resetForm()
-    }else{
-      ElMessage.success("ma'lumot qo'shildi")
-      resetForm()
-    } 
-    } else {
-      console.log("error submit!", fields);
+    resetForm()
+    ElMessage.success("ma'lumot qo'shildi")
+    router.push("/cabinet/admin/category")
+  } else {
+    console.log("error submit!", fields);
+    ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+    resetForm()
     }
   });
 };

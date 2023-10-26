@@ -107,8 +107,7 @@ onMounted(async() => {
 const onDelete = async (id) => {
   try {
     const {status} = await store.dispatch("brandDelete",id)
-    store.dispatch("fetchBrands", { params: { limit: 0, offset: 0 } });
-      
+     await getData();
     ElMessage.success("ma'lumot o'chirildi")
     }
      catch (error) {
@@ -118,15 +117,6 @@ const onDelete = async (id) => {
 };
 
 
-function onSelectedAll(e) {
-  deleteItems.value = [];
-  onDeleting.value = e.target.checked;
-  if (onDeleting.value) {
-    deleteItems.value = list.value.map((el) => el.id);
-  } else {
-    deleteItems.value = [];
-  }
-}
 
 function closeDeleting() {
   deleteItems.value = [];
