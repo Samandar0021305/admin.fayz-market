@@ -102,10 +102,10 @@
   import { ref, reactive, onMounted, computed } from "vue";
   import CustomPagesCreate from "@/components/custom/pages/update.vue";
   import { useStore } from "vuex";
-import { useRoute } from "vue-router";
+import { useRoute ,useRouter} from "vue-router";
   const store = useStore();
   const route = useRoute()
-
+  const router = useRouter()
   const formRef = ref();
   const form = reactive({
     firstname: "",
@@ -210,15 +210,16 @@ import { useRoute } from "vue-router";
     if (!formEl) return;
     await formEl.validate(async(valid, fields) => {
       if (valid) {
-        // console.log(form);
+
         const {status} = await store.dispatch("adminUpdate",{id:route.params.id,data:form})
         if(!status){
           ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
         }else{
         ElMessage.success("ma'lumot yangilandi")
+        router.push("/cabinet/admin/admin")
         }
       } else {
-        console.log("error submit!", fields);
+        ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
       }
     });
   };

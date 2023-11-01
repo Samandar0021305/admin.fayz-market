@@ -48,9 +48,16 @@
       </template>
       <template #footer>
         <div class="showcase">
-          <span>Showing 1 - 10 of {{ count }}</span>
-        </div>
-        <Pagination :limit="10" :count="count" :page="1" />
+        <span v-if="count <= 10">{{$t("showing")}} 1 - {{ count }} {{$t("of")}} {{ count }}</span>
+        <span v-else>{{$t("showing")}} 1 - 10 {{$t("of")}} {{ count }}</span>
+      </div>
+
+      
+      <Pagination :limit="params.limit"
+        :count="count"
+        :page="1"
+        @paginate="paginate"
+ />
       </template>
     </CustomPages>
   </template>
@@ -66,10 +73,21 @@
   const lists = reactive({value:""})
   const loading = ref(true)
   const count = ref("")
+  
+  const paginate = async (page) => {
+  params.offset = (page - 1) * params.limit;
+  await getData();
+  };
+
+  const params = reactive({
+  limit: 10,
+  offset: 0,
+  });
+
 
 
   const fetchingMessage = async()=>{
-    return await getMessage()
+    return await getMessage(params)
   }
 
   onMounted(()=>{

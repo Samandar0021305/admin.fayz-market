@@ -5,7 +5,7 @@ const usersEndpoints = {
 }
 
 export const getUsers = async(param)=>
-  await ConfigApi.get(usersEndpoints.list);
+  await ConfigApi.get(usersEndpoints.list,{param});
 
 export const deleteUsers = async(id)=>
  await ConfigApi.delete(usersEndpoints.list + `${id}/`)

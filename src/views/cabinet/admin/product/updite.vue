@@ -53,11 +53,11 @@
  <script setup>
  import { ref, reactive, computed, onMounted } from 'vue';
  import CustomPagesCreate from "@/components/custom/pages/create.vue"
- import {useRoute} from "vue-router"
+ import {useRoute, useRouter} from "vue-router"
  import { useStore } from 'vuex';
 const route = useRoute()
 const store = useStore()
-
+const router = useRouter()
 
 const value = computed(()=>{
     return store.state.product.current
@@ -157,10 +157,13 @@ const formSize = ref('100%')
          
          
          const res = store.dispatch("productUpdite",{id:route.params.id,form:ruleForm})
-         ElMessage.success("ma'lumot yangilandi")
+         
+            ElMessage.success("ma'lumot yangilandi")
+            router.push("/cabinet/admin/product");
+         
        } else {
           console.log('error submit!', fields)
-          ElMessage.success("ma'lumot qo'shilmadi")
+          ElMessage.error("ma'lumot qo'shilmadi")
        }
     })
  }

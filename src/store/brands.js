@@ -82,8 +82,6 @@ import { getBrands , createBrands, deleteBrands ,upditeBrands,getbyBrands} from 
                reject({
                 status:false
                })
-               ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
-
             }
           })   
         }

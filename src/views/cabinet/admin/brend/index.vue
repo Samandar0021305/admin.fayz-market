@@ -44,10 +44,16 @@
     </template>
     <template #footer>
       <div class="showcase">
-        <span v-if="count <= 10">Showing 1 - {{count}} of {{count}}</span>
-        <span v-else>Showing 1 - 10 of {{count}}</span>
+        <span v-if="count <= 10">{{$t("showing")}} 1 - {{ count }} {{$t("of")}} {{ count }}</span>
+        <span v-else>{{$t("showing")}} 1 - 10 {{$t("of")}} {{ count }}</span>
       </div>
-      <Pagination :limit="10" :count="count" :page="1" />
+
+      
+      <Pagination :limit="params.limit"
+        :count="count"
+        :page="1"
+        @paginate="paginate"
+ />
     </template>
   </CustomPages>
   <PopopPrtfolio :item="detail" />
@@ -55,7 +61,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted , reactive } from "vue";
 
 import PopopPrtfolio from "@/components/popup/brend/index.vue";
 
@@ -81,12 +87,19 @@ const count = computed(()=>{
 })
 
 
-onMounted(() => {
-  Promise.all([
-    store.dispatch("fetchBrands", { params: { limit: 0, offset: 0 } })
-  ]).finally(()=>{
-    loading.value = false
-  })
+const paginate = async (page) => {
+  params.offset = (page - 1) * params.limit;
+  await getData();
+};
+
+const params = reactive({
+  limit: 10,
+  offset: 0,
+});
+
+
+onMounted(async() => {
+   await getData()
 });
 
 
@@ -94,8 +107,7 @@ onMounted(() => {
 const onDelete = async (id) => {
   try {
     const {status} = await store.dispatch("brandDelete",id)
-    store.dispatch("fetchBrands", { params: { limit: 0, offset: 0 } });
-      
+     await getData();
     ElMessage.success("ma'lumot o'chirildi")
     }
      catch (error) {
@@ -105,15 +117,6 @@ const onDelete = async (id) => {
 };
 
 
-function onSelectedAll(e) {
-  deleteItems.value = [];
-  onDeleting.value = e.target.checked;
-  if (onDeleting.value) {
-    deleteItems.value = list.value.map((el) => el.id);
-  } else {
-    deleteItems.value = [];
-  }
-}
 
 function closeDeleting() {
   deleteItems.value = [];
@@ -123,6 +126,13 @@ function closeDeleting() {
 const handleClick = (id)=>{
   router.push(`/cabinet/admin/brend/${id}`)
  }
+ const getData = async () => {
+  loading.value = true;
+  await store.dispatch("fetchBrands", { params: params });
+  loading.value = false;
+};
+
+
 </script>
 
 <style lang="scss" scoped></style>

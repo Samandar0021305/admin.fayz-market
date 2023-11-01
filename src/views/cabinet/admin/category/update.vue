@@ -22,7 +22,7 @@
               >
                 <svgicon :class="{ filter: upload }" name="Upload" />
                 <p>
-                  Upload profile image here <br />
+                  rasmni bu yerga yuklang<br />
                   (JPG, PNG)
                 </p>
                 <h6>Browse</h6>
@@ -69,9 +69,10 @@
 import CustomPagesUpdate from "@/components/custom/pages/update.vue";
 import { useStore } from 'vuex';
 import {  ref, reactive, onMounted } from 'vue';
-import { useRoute} from "vue-router"
+import { useRoute, useRouter} from "vue-router"
 const store = useStore();
 const route = useRoute();
+const router = useRouter()
 
 const upload = ref(null)
 const formRef = ref();
@@ -143,15 +144,12 @@ const submitForm = async (formEl) => {
           fd.append(key,form[key])
         }
        })
-      const {status} = await store.dispatch("upditecat",{id:route.params.id,form:fd})
+      const res = await store.dispatch("upditecat",{id:route.params.id,form:fd})
 
-      if(!status){
-        ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
-      }else{
       ElMessage.success("ma'lumot yangilandi")
-      }
+      router.push("/cabinet/admin/category")
     } else {
-      console.log("error submit!", fields);
+      ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
     }
   });
 };

@@ -4,8 +4,8 @@ const productsEndpoints = {
   list: "products/"
 };
 
-export const getProduct = async (params) =>
-  await ConfigApi.get(productsEndpoints.list);
+export const getProduct = async ({params}) =>
+  await ConfigApi.get(productsEndpoints.list,{params});
 
 export const createProduct = async (data) =>
   await ConfigApi.post(productsEndpoints.list, data );

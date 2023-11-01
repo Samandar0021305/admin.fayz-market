@@ -47,9 +47,16 @@
       </template>
       <template #footer>
         <div class="showcase">
-          <span>Showing 1 - {{ count }} of 10</span>
-        </div>
-        <Pagination :limit="10" :count="count" :page="2" />
+        <span v-if="count <= 10">{{$t("showing")}} 1 - {{ count }} {{$t("of")}} {{ count }}</span>
+        <span v-else>{{$t("showing")}} 1 - 10 {{$t("of")}} {{ count }}</span>
+      </div>
+
+      
+      <Pagination :limit="params.limit"
+        :count="count"
+        :page="1"
+        @paginate="paginate"
+ />
       </template>
     </CustomPages>
     <PopopCandidates :item="detail" />
@@ -73,6 +80,16 @@ const detail = ref(null);
 
 const loading = ref(true)
 
+const paginate = async (page) => {
+  params.offset = (page - 1) * params.limit;
+  await getData();
+};
+
+const params = reactive({
+  limit: 10,
+  offset: 0,
+});
+
 const lists = computed(()=>{
   return store.getters.getAdminsList.list
 })
@@ -81,51 +98,18 @@ const count = computed(()=>{
   return store.getters.getAdminsList.count
 })
 
-onMounted(()=>{
-  Promise.all([store.dispatch("fetchAdmin",{ params: { limit: 0, offset: 0 } })]).finally(()=>{
-    loading.value = false;
-  })
+onMounted(async()=>{
+  await getData()
 })
 
 const onDeleting = ref(false);
 const deleteItems = ref([]);
-const list = reactive([
-  {
-    id: 1,
-  },
-  {
-    id: 2,
-  },
-  {
-    id: 3,
-  },
-  {
-    id: 4,
-  },
-  {
-    id: 5,
-  },
-  {
-    id: 6,
-  },
-  {
-    id: 7,
-  },
-  {
-    id: 8,
-  },
-  {
-    id: 9,
-  },
-  {
-    id: 10,
-  },
-]);
 
 
 const onDelete = async (id) => {
   try {
     const res = store.dispatch("adminDelete",id)
+    await getData()
     ElMessage({
       message: "Congrats, this is a success message.",
       type: "success",
@@ -137,30 +121,7 @@ const onDelete = async (id) => {
   }
 };
 
-function toggle(e, itemId) {
-  const f = deleteItems.value.findIndex((item) => item == itemId);
 
-  if (f != -1) {
-    deleteItems.value.splice(f, 1);
-  } else {
-    deleteItems.value.push(itemId);
-  }
-  if (deleteItems.value.length == list.length) {
-    onDeleting.value = true;
-  } else {
-    onDeleting.value = false;
-  }
-}
-
-function onSelectedAll(e) {
-  deleteItems.value = [];
-  onDeleting.value = e.target.checked;
-  if (onDeleting.value) {
-    deleteItems.value = list.map((el) => el.id);
-  } else {
-    deleteItems.value = [];
-  }
-}
 
 function closeDeleting() {
   deleteItems.value = [];
@@ -170,5 +131,13 @@ function closeDeleting() {
 const handleClick = (id)=>{
  router.push(`/cabinet/admin/admin/${id}`)
 }
+
+
+
+const getData = async () => {
+  loading.value = true;
+  await store.dispatch("fetchAdmin", { params: params });
+  loading.value = false;
+};
 
 </script>

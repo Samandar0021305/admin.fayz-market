@@ -91,8 +91,9 @@
 import { ref, reactive, onMounted, computed } from "vue";
   import CustomPagesCreate from "@/components/custom/pages/create.vue";
   import { useStore } from "vuex";
+import { useRouter} from "vue-router";
   const store = useStore();
-  
+  const router = useRouter()
   const formRef = ref();
   const form = reactive({
     firstname: "",
@@ -186,15 +187,18 @@ import { ref, reactive, onMounted, computed } from "vue";
     if (!formEl) return;
     await formEl.validate(async(valid, fields) => {
       if (valid) {
-        console.log(form);
-        const {status} = await store.dispatch("AdminCreate",form)
-        if(!status){
-          ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+        
+        const res = await store.dispatch("AdminCreate",form)
+        router.push("/cabinet/admin/klentlar")
+        if(!res.status){
+          console.log(res);
+          ElMessage.success("ma'lumot qo'shildi")
         }else{
-        ElMessage.success("ma'lumot qo'shildi")
+          console.log(res);
+        ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
         }
       } else {
-        console.log("error submit!", fields);
+        ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
       }
     });
   };

@@ -5,8 +5,8 @@ const paymentsEndpoints = {
 }
 
 
-export const getPayments = async()=>
-  await ConfigApi.get(paymentsEndpoints.list)
+export const getPayments = async(params)=>
+  await ConfigApi.get(paymentsEndpoints.list,{params})
 
 export const deletePayments = async(id)=>
   await ConfigApi.delete(paymentsEndpoints.list + `${id}/`)

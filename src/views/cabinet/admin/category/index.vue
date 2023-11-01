@@ -44,16 +44,23 @@
     </template>
     <template #footer>
       <div class="showcase">
-        <span>Showing 1 - 10 of 350</span>
+        <span v-if="count <= 10">{{$t("showing")}} 1 - {{ count }} {{$t("of")}} {{ count }}</span>
+        <span v-else>{{$t("showing")}} 1 - 10 {{$t("of")}} {{ count }}</span>
       </div>
-      <Pagination :limit="10" :count="count" :page="1" />
+
+      
+      <Pagination :limit="params.limit"
+        :count="count"
+        :page="1"
+        @paginate="paginate"
+ />
     </template>
   </CustomPages>
   <PopopMessages :item="detail"/>
 </template>
 
 <script setup>
-import { ref, computed,onMounted } from "vue";
+import { ref, computed,onMounted,reactive } from "vue";
 
 import CustomPages from "@/components/custom/pages/index.vue";
 import CustomTable from "@/components/custom/table.vue";
@@ -75,10 +82,18 @@ const count = computed(()=>{
    return  store.getters.categoryDataList.count
 })
 
-onMounted(() => {
-  Promise.all([store.dispatch("fetchCategory", { params: { limit: 0, offset: 0 } })]).finally(()=>{
-    loading.value = false
-  })
+const paginate = async (page) => {
+  params.offset = (page - 1) * params.limit;
+  await getData();
+};
+
+const params = reactive({
+  limit: 10,
+  offset: 0,
+});
+
+onMounted(async() => {
+ await getData();
 });
 
 
@@ -92,7 +107,7 @@ const deleteItems = ref([]);
 const onDelete = async (id) => {
   try {
       const {status} = await store.dispatch("categoryDelete",id)
-      store.dispatch("fetchCategory", { params: { limit: 0, offset: 0 } });
+      await getData();
      ElMessage.success("ma'lumot o'chirildi")
   } catch (error) {
     ElMessage.error("ma'lumot o'chirilmadi xatolik bor qaytadan urinib ko'ring")
@@ -108,6 +123,13 @@ function closeDeleting() {
 const handleClick = (id)=>{
   router.push(`/cabinet/admin/category/${id}`)
 }
+
+const getData = async () => {
+  loading.value = true;
+  await store.dispatch("fetchCategory", { params: params });
+  loading.value = false;
+};
+
 </script>
 
 <style lang="scss" scoped></style>

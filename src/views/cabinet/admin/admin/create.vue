@@ -102,8 +102,10 @@
   import { ref, reactive, onMounted, computed } from "vue";
   import CustomPagesCreate from "@/components/custom/pages/create.vue";
   import { useStore } from "vuex";
+  import {useRouter} from "vue-router"; 
   const store = useStore();
-  
+  const router = useRouter()
+
   const formRef = ref();
   const form = reactive({
     firstname: "",

@@ -65,9 +65,16 @@
     </template>
     <template #footer>
       <div class="showcase">
-        <span>Showing 1 - 10 of {{ count }}</span>
+        <span v-if="count <= 10">{{$t("showing")}} 1 - {{ count }} {{$t("of")}} {{ count }}</span>
+        <span v-else>{{$t("showing")}} 1 - 10 {{$t("of")}} {{ count }}</span>
       </div>
-      <Pagination :limit="10" :count="count" :page="2" />
+
+      
+      <Pagination :limit="params.limit"
+        :count="count"
+        :page="1"
+        @paginate="paginate"
+ />
     </template>
   </CustomPages>
   <PopopVacancy :item="detail" />
@@ -90,6 +97,18 @@ const router = useRouter();
 const detail = ref(null);
 const loading = ref(true)
 
+
+const paginate = async (page) => {
+  params.offset = (page - 1) * params.limit;
+  await getData();
+};
+
+const params = reactive({
+  limit: 10,
+  offset: 0,
+});
+
+
 const lists = computed(()=>{
   return store.getters.getUsersList.list
 })
@@ -98,55 +117,19 @@ const count = computed(()=>{
   return store.getters.getUsersList.count
 })
 
-onMounted(()=>{
-  Promise.all([
-    store.dispatch("fetchUsers",{})
-  ]).finally(()=>{
-    loading.value = false;
-  })
+onMounted(async()=>{
+ await getData()
 })
 
 
 const onDeleting = ref(false);
 const deleteItems = ref([]);
-const list = reactive([
-  {
-    id: 1,
-  },
-  {
-    id: 2,
-  },
-  {
-    id: 3,
-  },
-  {
-    id: 4,
-  },
-  {
-    id: 5,
-  },
-  {
-    id: 6,
-  },
-  {
-    id: 7,
-  },
-  {
-    id: 8,
-  },
-  {
-    id: 9,
-  },
-  {
-    id: 10,
-  },
-]);
 
 
 const onDelete = async (id) => {
   try {
     const res = await store.dispatch("usersDelete",id)
-    store.dispatch("fetchUsers",{});
+     await getData();
     ElMessage.success("ma'lumot o'chirildi");
   } catch{ 
     ElMessage.error("ma'lumot o'chirilmadi hatolik bor");
@@ -164,6 +147,14 @@ function closeDeleting() {
 const handleClick = (id)=>{
   router.push(`/cabinet/admin/klentlar/${id}`)
 }
+
+
+
+const getData = async () => {
+  loading.value = true;
+  await store.dispatch("fetchUsers", { params: params });
+  loading.value = false;
+};
 
 </script>
 

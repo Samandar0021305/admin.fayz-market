@@ -104,12 +104,11 @@
 import { ref, reactive, computed, watch, provide } from "vue"
 import CustomPagesCreate from "@/components/custom/pages/create.vue"
 import { useStore } from 'vuex';
-
-
+import { useRouter } from "vue-router";
 
 const uploadedImages = ref([]);
 let formData = new FormData();
-
+const router = useRouter();;
 const textarea = ref('')
 
 
@@ -184,10 +183,14 @@ const submitForm = async (formEl) => {
           });
            
          const res = store.dispatch("productCreate", formData)
-         ElMessage.success("ma'lumot qo'shildi")
+         
+            ElMessage.success("ma'lumot qo'shildi")
+            router.push("/cabinet/admin/product");
+         
       } else {
          console.log('error submit!', fields)
-         ElMessage.error("ma'lumot hato")
+         ElMessage.error("ma'lumot hato qayta harakat qilib ko'ring")
+         
       }
    })
 }

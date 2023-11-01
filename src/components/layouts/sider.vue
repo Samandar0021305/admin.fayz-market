@@ -3,7 +3,8 @@
     <div class="sider-header">
       <div class="logo">
         <!-- <img src="../../assets/images/fayzmarket.jpg" alt=""> -->
-        <svgicon name="logo" /> 
+        <!-- <svgicon name="logo" />  -->
+        <img src="../../assets/logo.jpg" alt="">
       </div>
     </div>
     <el-scrollbar height="100%">

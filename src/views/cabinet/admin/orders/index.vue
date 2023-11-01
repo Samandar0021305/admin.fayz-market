@@ -64,9 +64,16 @@
     </template>
     <template #footer>
       <div class="showcase">
-        <span>Showing 1 - 10 of {{ count }}</span>
+        <span v-if="count <= 10">{{$t("showing")}} 1 - {{ count }} {{$t("of")}} {{ count }}</span>
+        <span v-else>{{$t("showing")}} 1 - 10 {{$t("of")}} {{ count }}</span>
       </div>
-      <Pagination :limit="10" :count="count" :page="1" />
+
+      
+      <Pagination :limit="params.limit"
+        :count="count"
+        :page="1"
+        @paginate="paginate"
+ />
     </template>
   </CustomPages>
   <PopopOrder :item="detail" />
@@ -94,12 +101,20 @@ const lists = computed(()=>{
 const count = computed(()=>{
   return store.getters.getOrderAdminList.count;
 })
-onMounted(()=>{
-  Promise.all([
-    store.dispatch("fetchOrderAdmin",{ params: { limit: 0, offset: 0 } })
-  ]).finally(()=>{
-    loading.value = false;
-  })
+
+const paginate = async (page) => {
+  params.offset = (page - 1) * params.limit;
+  await getData();
+};
+
+const params = reactive({
+  limit: 10,
+  offset: 0,
+});
+
+
+onMounted(async()=>{
+  await getData();
 })
 
 
@@ -118,6 +133,12 @@ const onDelete = async (id) => {
   }
 };
 
+
+const getData = async () => {
+  loading.value = true;
+  await store.dispatch("fetchOrderAdmin", { params: params });
+  loading.value = false;
+};
 
 </script>
 
