@@ -35,7 +35,7 @@ import { getUsers ,deleteUsers ,createUsers, getbyidUsers , updateUsers} from ".
         async usersDelete(_,id){
             return new Promise(async(resolve,reject)=>{
                 try{
-                  const res = deleteUsers(id);
+                  const res = await deleteUsers(id);
                   resolve({status:true})
                 }catch(e){
                     reject({status:false})

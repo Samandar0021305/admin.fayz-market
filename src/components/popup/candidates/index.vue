@@ -56,15 +56,7 @@
                 </div>
                 <div class="content"><span>{{ item.status.phone_number }}</span></div>
               </li>
-              <!-- <li>
-                <div class="icon">
-                  <svgicon name="email" />
-                  <span>E-mail</span>
-                </div>
-                <div class="content">
-                  <span>sohibsharipov000@gmail.com</span>
-                </div>
-              </li> -->
+             
               <li>
                 <div class="icon">
                   <svgicon name="clipboard" />
@@ -78,19 +70,7 @@
               </li>
             </ul>
           </el-col>
-          <!-- <el-col :md="12" :sm="12" :xs="20">
-            <ul>
-              <li class="block">
-                <div class="icon">
-                  <svgicon name="book" />
-                  <span>Information</span>
-                </div>
-                <div class="content">
-                  ÷
-                </div>
-              </li>
-            </ul>
-          </el-col> -->
+         
         </el-row>
       </div>
     </template>

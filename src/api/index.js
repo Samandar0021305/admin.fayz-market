@@ -31,7 +31,8 @@ ConfigApi.interceptors.request.use(async (config) => {
   const access = localStorage.getItem('access');
   if(access){
     config.headers = {
-      Authorization: `Bearer ${access}`
+      Authorization: `Bearer ${access}`,
+      'Content-Type': 'application/json'
     };
   }
   return await config;

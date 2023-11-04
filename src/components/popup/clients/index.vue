@@ -42,7 +42,7 @@
         <el-row :gutter="60">
           <el-col :md="10" :sm="10" :xs="20" class="right-line">
             <div class="image">
-              <img :src="current.images[0].photo" :alt="item.title" />
+              <img :src="'https://api.fayz-market.uz'+current.images[0].photo" :alt="item.title" />
             </div>
             
             <a :href="item.url" target="_blank">{{item.url}}</a>

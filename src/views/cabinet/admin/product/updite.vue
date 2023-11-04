@@ -101,13 +101,9 @@ const formSize = ref('100%')
 
  onMounted(async()=>{
    let res = await store.dispatch("curentProduct",route.params.id)
-  ruleForm.name =res.data?.name;
-  ruleForm.price = res.data.price
-  ruleForm.is_famous = res.data.is_famous
-  ruleForm.brands.name = res.data?.brand?.name
-  ruleForm.brands.is_famous = res.data?.brand?.is_famous 
-  ruleForm.category.name = res.data?.category?.name
-  ruleForm.category.is_main = res.data?.category?.is_main;
+   Object.keys(ruleForm).forEach(key=>{
+     ruleForm[key] = res.data[key];
+   })
 })
 
  
@@ -154,10 +150,14 @@ const formSize = ref('100%')
     if (!formEl) return
     await formEl.validate((valid, fields) => {
        if (valid) {
+          
+         const data = new FormData();
+         Object.keys(ruleForm).forEach(key=>{
+           data.append(key,ruleForm[key]);
+         })
          
-         
-         const res = store.dispatch("productUpdite",{id:route.params.id,form:ruleForm})
-         
+           const res = store.dispatch("productUpdite",{id:route.params.id,form:data})
+           
             ElMessage.success("ma'lumot yangilandi")
             router.push("/cabinet/admin/product");
          
