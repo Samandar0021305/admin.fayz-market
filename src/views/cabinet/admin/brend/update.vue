@@ -78,7 +78,7 @@ onMounted(async()=>{
   if(res.status){
     Object.keys(form).forEach(key=>{
       if(key == "image"){
-        upload.value = res.data[key]
+        upload.value = 'https://api.fayz-market.uz'+res.data[key]
       }else{
         form[key] = res.data[key]
       }

@@ -61,11 +61,11 @@
 <script setup>
 import { ref, reactive } from "vue";
 import CustomPagesCreate from "@/components/custom/pages/create.vue";
-const upload = ref(null)
-const activeLang = ref("uz");
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 const store = useStore();
+const upload = ref(null)
+const activeLang = ref("uz");
 const router = useRouter()
 
 const formRef = ref();

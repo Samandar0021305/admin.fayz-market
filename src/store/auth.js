@@ -16,7 +16,7 @@ const auth = {
       },
     },
     mutations: {
-      setState(state, { key, value }) {
+      SET_TOKEN(state, { key, value }) {
         value && localStorage.setItem(key, value);
         !value && localStorage.removeItem(key);
         state[key] = value;
@@ -26,7 +26,6 @@ const auth = {
       login({ commit }, form) {
         return new Promise(async (resolve, reject) => {
           try {
-            // const res = await this.$axios.post("token/", form);
             const res = await ConfigApi.post("token/",form)
            if(res){
             const { access } = res ;
@@ -39,8 +38,8 @@ const auth = {
               token_split.length > 1 &&
               JSON.parse(window.atob(token_split[1]));
   
-            commit("setState", { key: "access", value: token });
-            commit("setState", { key: "role", value: 1 });
+            commit("SET_TOKEN", { key: "access", value: token });
+            commit("SET_TOKEN", { key: "role", value: 1 });
   
             resolve({
               status: true,

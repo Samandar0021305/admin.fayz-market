@@ -23,7 +23,7 @@
               <span>{{ item.name }}</span>
             </td>
             <td @click="detail = {status: item}">
-               <span class="image"><img :src="item.image"/></span>
+               <span class="image"><img :src="'https://api.fayz-market.uz'+item.image"/></span>
             </td>
             <td width="27%">
               <ul class="table--action">

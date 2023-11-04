@@ -47,16 +47,16 @@
                   <svgicon name="user" />
                   <span>Name</span>
                 </div>
-                <div class="content"><span>Muhammad ali Eshonqulov</span></div>
+                <div class="content"><span>{{ item.status.firstname }}</span></div>
               </li>
               <li>
                 <div class="icon">
                   <svgicon name="phone" />
                   <span>Phone</span>
                 </div>
-                <div class="content"><span>+998 90 325 36 32</span></div>
+                <div class="content"><span>{{ item.status.phone_number }}</span></div>
               </li>
-              <li>
+              <!-- <li>
                 <div class="icon">
                   <svgicon name="email" />
                   <span>E-mail</span>
@@ -64,7 +64,7 @@
                 <div class="content">
                   <span>sohibsharipov000@gmail.com</span>
                 </div>
-              </li>
+              </li> -->
               <li>
                 <div class="icon">
                   <svgicon name="clipboard" />
@@ -78,7 +78,7 @@
               </li>
             </ul>
           </el-col>
-          <el-col :md="12" :sm="12" :xs="20">
+          <!-- <el-col :md="12" :sm="12" :xs="20">
             <ul>
               <li class="block">
                 <div class="icon">
@@ -86,16 +86,11 @@
                   <span>Information</span>
                 </div>
                 <div class="content">
-                  <span
-                    >Old fashioned recipe for preventing allergies and chemical
-                    sensitivities recipe for preventing allergies and chemical
-                    sensitivities. <br> Old fashioned recipe for preventing allergies
-                    and chemical sensitivities.</span
-                  >
+                  ÷
                 </div>
               </li>
             </ul>
-          </el-col>
+          </el-col> -->
         </el-row>
       </div>
     </template>
@@ -114,6 +109,7 @@ const props = defineProps({
   },
 });
 const { item } = toRefs(props);
+console.log(item)
 </script>
 
 <style lang="scss" scoped></style>

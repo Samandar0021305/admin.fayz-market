@@ -12,21 +12,21 @@
         :rules="rules"
         status-icon
       >
-        <el-form-item label="telefon raqam" prop="telefon">
+        <el-form-item label="Telefon raqam" prop="telefon">
           <el-input
             autofocus
             @keypress.enter="submitForm(formRef)"
             v-model="form.phone_number"
-            placeholder="telefon raqam kiriting"
+            placeholder="Telefon raqam kiriting"
           />
         </el-form-item>
-        <el-form-item label="parol" prop="password">
+        <el-form-item label="Parol" prop="password">
           <el-input
             autofocus
             v-model="form.password"
             type="password"
             @keypress.enter="submitForm(formRef)"
-            placeholder="parol kiriting"
+            placeholder="Parol kiriting"
             show-password
           />
         </el-form-item>
@@ -35,19 +35,17 @@
         >Kirish</el-button
       >
     </div>
-    <div class="signin-footer">
-      <span class="forgot">parol esingizda yo'qmi?</span>
-    </div>
+   
   </div>
 </template>
 
 <script setup>
 import { ref, reactive } from "vue";
+import { useRouter } from "vue-router";
 
 import { useStore } from "vuex";
 const store = useStore();
 
-import { useRouter } from "vue-router";
 const router = useRouter();
 
 const formRef = ref();
@@ -61,14 +59,14 @@ const rules = reactive({
   phone_number: [
     {
       required: true,
-      message: "telefon raqamingizni kiriting",
+      message: "Telefon raqamingizni kiriting",
       trigger: "blur",
     },
   ],
   password: [
     {
       required: true,
-      message: "parol kiriting",
+      message: "Parol kiriting",
       trigger: "blur",
     },
   ],
@@ -85,10 +83,10 @@ const submitForm = async (formEl) => {
         } 
       } catch (error) {
         ElMessage.error("phone_number or password is wrong!");
-        console.error(error);
+     
       }
     } else {
-      console.log("error submit!", fields);
+      ElMessage.error("phone_number or password is wrong!");
     }
   });
 };
