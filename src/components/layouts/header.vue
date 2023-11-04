@@ -56,6 +56,7 @@ watch(theme, (value) => {
 
 function logout() {
   localStorage.removeItem("role");
+  localStorage.removeItem("access")
   router.push(`/auth/sign-in`);
 }
 
