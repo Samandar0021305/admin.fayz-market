@@ -48,8 +48,7 @@ const auth = {
            }
           } catch  {
             reject({
-              status: false,
-              error: e,
+              status: false
             });
           }
         });
