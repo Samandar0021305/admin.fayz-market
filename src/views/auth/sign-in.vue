@@ -1,7 +1,7 @@
 <template>
   <div class="signin">
     <div class="signin-header">
-      <strong><span>FazyMarket</span> ga kirish </strong>
+      <strong><span>FazyMarket</span> ga kirish.</strong>
       <small>Iltimos, maʼlumotlaringizni kiriting</small>
     </div>
     <div class="signin-body">
