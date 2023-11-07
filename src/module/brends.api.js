@@ -8,8 +8,8 @@ export const getBrands = async(params)=>
   await ConfigApi.get(brandsEndpoints.list,{params})
 
 
-  export const createBrand = async(data)=>
-   await ConfigApi.post(brandsEndpoints.list, data)
+  export const createBrand = async(fd)=>
+   await ConfigApi.post(brandsEndpoints.list, fd)
 
 
 export const deleteBrands = async (id) =>

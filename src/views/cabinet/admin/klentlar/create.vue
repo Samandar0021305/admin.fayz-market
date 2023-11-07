@@ -187,7 +187,6 @@ import { useRouter} from "vue-router";
     if (!formEl) return;
     await formEl.validate(async(valid, fields) => {
       if (valid) {
-        
         const res = await store.dispatch("AdminCreate",form)
         router.push("/cabinet/admin/klentlar")
         if(!res.status){

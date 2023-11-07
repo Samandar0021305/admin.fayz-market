@@ -73,10 +73,10 @@ import { getBrands , createBrand, deleteBrands ,upditeBrands,getbyBrands} from "
             })
         },
       
-        async createBrands(_,form){
+        async createBrands(_,fd){
           return new Promise(async (resolve,reject)=>{
             try{
-               const res = await createBrand(form);
+               const res = await createBrand(fd);
                resolve({status:true})
              }catch(c){
                reject({

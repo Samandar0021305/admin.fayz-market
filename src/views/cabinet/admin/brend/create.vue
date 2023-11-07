@@ -33,8 +33,8 @@
               </el-col>
               
               <el-col :md="16" :sm="12" :xs="20">
-                <el-form-item prop="is_main">
-                    <el-checkbox label="type" name="type" v-model="form.is_main"/>
+                <el-form-item prop="is_famous">
+                    <el-checkbox label="type" name="type" v-model="form.is_famous"/>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -67,12 +67,11 @@ const store = useStore();
 const upload = ref(null)
 const activeLang = ref("uz");
 const router = useRouter()
-const fd = new FormData()
 
 const formRef = ref();
 const form = reactive({
   name: "",
-  is_main: true,
+  is_famous: true,
   image:null
 });
 
@@ -85,7 +84,7 @@ const rules = reactive({
     },
   ],
   
-  is_main: [
+  is_famous: [
     {
       required: false,
       trigger: "change",
@@ -94,7 +93,7 @@ const rules = reactive({
   
   image: [
     {
-      required: true,
+      required: false,
       message: "rasim yuklang",
       trigger: "blur",
     },
@@ -104,11 +103,12 @@ const rules = reactive({
 
 const onChange = (event)=>{
         const value1 = event.target.files[0]
-        console.log("sda",value1);
+        form.image = value1
+        console.log("Image   ", form.image);
+
         if(value1){
           const reder = new FileReader();
           reder.onload=(e)=>{
-          form.image = value1
          upload.value = e.target.result
         }
         reder.readAsDataURL(value1)
@@ -120,15 +120,26 @@ const submitForm = async (formEl) => {
   if (!formEl) return;
   await formEl.validate(async(valid, fields) => {
     if (valid) {
-      Object.keys(form).forEach((key) => {
-       fd.append(key, form[key]);
-      
-      })
+    const fd = new FormData()
+   
+    Object.keys(form).forEach(key=>{
+      if(form[key] && key !=  "is_famous"){
+        fd.append(key,form[key])
+      }else if(key == "is_famous"){
+       fd.append(key,form[key])
+      }
+    })
 
-      console.log("formdata",fd);
+    try{
       const res = await store.dispatch("createBrands",fd)
       ElMessage.success("ma'lumot qo'shildi")
+
       // router.push("/cabinet/admin/brend")
+    }catch{
+      ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+
+    }
+      
     } else {
       
       ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");

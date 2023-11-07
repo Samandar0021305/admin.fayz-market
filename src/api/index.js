@@ -32,8 +32,7 @@ ConfigApi.interceptors.request.use(async (config) => {
   if(access){
     config.headers = {
       Authorization: `Bearer ${access}`,
-      'Content-Type': 'application/json'
-    };
+      };
   }
   return await config;
 });
