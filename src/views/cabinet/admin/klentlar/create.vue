@@ -190,10 +190,10 @@ import { useRouter} from "vue-router";
         const res = await store.dispatch("AdminCreate",form)
         router.push("/cabinet/admin/klentlar")
         if(!res.status){
-          console.log(res);
+          
           ElMessage.success("ma'lumot qo'shildi")
         }else{
-          console.log(res);
+         
         ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
         }
       } else {
