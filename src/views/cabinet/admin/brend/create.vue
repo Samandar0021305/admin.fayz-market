@@ -67,12 +67,13 @@ const store = useStore();
 const upload = ref(null)
 const activeLang = ref("uz");
 const router = useRouter()
+const fd = new FormData()
 
 const formRef = ref();
 const form = reactive({
   name: "",
   is_main: true,
-  image:ref(null)
+  image:null
 });
 
 const rules = reactive({
@@ -103,6 +104,7 @@ const rules = reactive({
 
 const onChange = (event)=>{
         const value1 = event.target.files[0]
+        console.log("sda",value1);
         if(value1){
           form.image = value1
         const reder = new FileReader();
@@ -113,17 +115,20 @@ const onChange = (event)=>{
       }
 }
 
+
 const submitForm = async (formEl) => {
   if (!formEl) return;
   await formEl.validate(async(valid, fields) => {
     if (valid) {
-      const fd = new FormData()
       Object.keys(form).forEach((key) => {
-        fd.append(key, form[key]);
+       fd.append(key, form[key]);
+      
       })
+
+      console.log("formdata",fd);
       const res = await store.dispatch("createBrands",fd)
       ElMessage.success("ma'lumot qo'shildi")
-      router.push("/cabinet/admin/brend")
+      // router.push("/cabinet/admin/brend")
     } else {
       
       ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");

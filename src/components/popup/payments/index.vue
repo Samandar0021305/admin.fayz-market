@@ -14,12 +14,12 @@
               <svgicon name="share" />
             </button>
             <el-popover placement="bottom" width="120" trigger="click">
-              <template #reference>
+              <!-- <template #reference>
                 <button>
                   <svgicon name="dots-horizontal" />
                 </button>
-              </template>
-              <div class="table-action">
+              </template> -->
+              <!-- <div class="table-action">
                 <button class="edit">
                   <svgicon name="edit" />
                   <span>Edit</span>
@@ -32,7 +32,7 @@
                   <svgicon name="eye" />
                   <span>View</span>
                 </button>
-              </div>
+              </div> -->
             </el-popover>
           </div>
         </div>

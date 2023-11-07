@@ -1,6 +1,6 @@
 <template>
   <!-- Width="670px" -->
-  <PopopLayout title="Mahsulotlar"  :isVisible="item">
+  <PopopLayout title="Mahsulotlar" v-if="current"  :isVisible="current">
     <template #header>
       <div v-if="current != {}" class="popup-header">
         <div class="status">
@@ -19,19 +19,16 @@
                 <svgicon name="dots-horizontal" />
               </button>
             </template>
-            <div class="table-action">
-              <button class="edit">
+            <div class="table-action" v-if="current">
+              <button class="edit"  @click="handleClick(current.id)">
                 <svgicon name="edit" />
                 <span>Edit</span>
               </button>
-              <button class="delete">
+              <button class="delete" @click="onDelete(current.id)">
                 <svgicon name="delete" />
-                <span>Delete</span>
+                <span >Delete</span>
               </button>
-              <button class="view">
-                <svgicon name="eye" />
-                <span>View</span>
-              </button>
+              
             </div>
           </el-popover>
         </div>
@@ -76,8 +73,24 @@
 <script setup>
 import PopopLayout from "@/components/popup/layout.vue";
 
-import { defineProps, toRefs ,reactive , watch } from "vue";
+import { useRouter } from "vue-router";
+import { defineProps, toRefs ,reactive , watch, ref } from "vue";
+import { useStore } from "vuex";
 
+const store = useStore()
+const router = useRouter()
+
+const onDelete = async (id) => {
+  try {
+      const data = await store.dispatch("productDelete",id)
+      store.dispatch("fetchProduct", { params: { limit: 0, offset: 0 } });
+      ElMessage.success("ma'lumot o'chirildi")
+      current.value = null
+       
+  } catch (error) {
+    console.log(error);
+  }
+};
 const props = defineProps({
   item: {
     type: Object,
@@ -86,11 +99,17 @@ const props = defineProps({
 });
 const { item } = toRefs(props);
 
-let current =  reactive({});
+let current =  ref();
 watch(item,(newValue,oldValue)=>{
-  current = newValue.status
+  current.value = newValue.status
   console.log(item);
 })
+
+const handleClick = (id)=>{
+  current.value = null
+
+  router.push(`/cabinet/admin/product/${id}`)
+}
 
 </script>
 

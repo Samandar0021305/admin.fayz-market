@@ -23,9 +23,6 @@
           <th>
             <span>{{ "mahsulot soni" }} </span>
           </th>
-          
-          
-          
           <th>
             <span>{{ "Actions" }} </span>
           </th>

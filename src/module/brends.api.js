@@ -1,14 +1,14 @@
 import ConfigApi from "../api";
 
 const brandsEndpoints = {
-    list:"brands/"
+    list:"/brands/"
 }
 
 export const getBrands = async(params)=> 
   await ConfigApi.get(brandsEndpoints.list,{params})
 
 
-  export const createBrands = async(data)=>
+  export const createBrand = async(data)=>
    await ConfigApi.post(brandsEndpoints.list, data)
 
 

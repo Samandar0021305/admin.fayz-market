@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref, toRefs } from "vue";
+import { defineProps, toRefs } from "vue";
 
 const props = defineProps({
   isVisible: {
@@ -24,15 +24,9 @@ const props = defineProps({
   title: {
     type: String,
     default: "title",
-  },
- 
-  status: {
-    type: Boolean,
-    String,
-    default: "Avtive",
-  },
+  }
 });
-const { isVisible, title, Width, status } = toRefs(props);
+const { isVisible, title } = toRefs(props);
 </script>
 
 <style lang="scss" scoped></style>

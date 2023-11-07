@@ -24,6 +24,7 @@
             </td>
             <td width="300px" @click="detail = {status: item}">
               <span class="image"><img :src="'https://api.fayz-market.uz'+item.image" alt=""></span>
+             
             </td>
             <td width="200px">
               <ul class="table--action">
@@ -100,6 +101,7 @@ const params = reactive({
 
 onMounted(async() => {
    await getData()
+   console.log(lists);
 });
 
 

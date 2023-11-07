@@ -1,6 +1,6 @@
 <template>
     <!-- Width="670px" -->
-    <PopopLayout title="to'lovlar" :isVisible="item">
+    <PopopLayout title="to'lovlar" v-if="current" :isVisible="item">
       <template #header>
         <div v-if="current != {}" class="popup-header">
           <div class="status">
@@ -19,19 +19,13 @@
                   <svgicon name="dots-horizontal" />
                 </button>
               </template>
-              <div class="table-action">
-                <button class="edit">
-                  <svgicon name="edit" />
-                  <span>Edit</span>
-                </button>
-                <button class="delete">
+              <div class="table-action" v-if="current">
+               
+                <button class="delete" @click="onDelete(current.id)">
                   <svgicon name="delete" />
                   <span>Delete</span>
                 </button>
-                <button class="view">
-                  <svgicon name="eye" />
-                  <span>View</span>
-                </button>
+               
               </div>
             </el-popover>
           </div>
@@ -84,9 +78,9 @@
   <script setup>
   import PopopLayout from "@/components/popup/layout.vue";
   
-  import { defineProps, toRefs, watch, reactive } from 'vue';
+  import { defineProps, toRefs, watch, ref } from 'vue';
   import { useRouter } from 'vue-router';
-  
+  import { useStore } from "vuex";
   const router = useRouter();
   
   const props = defineProps({
@@ -96,12 +90,24 @@
     },
   });
   const { item } = toRefs(props);
-  let current=  reactive({});
+  let current=  ref();
   watch(item,(newValue,oldValue)=>{
-    current = newValue.status
+    current.value = newValue.status
   })
   
-  
+  const store = useStore()
+
+const onDelete = async (id) => {
+  try {
+      const data = await store.dispatch("OrderAdminDelete",id)
+      store.dispatch("fetchOrderAdmin", { params: { limit: 0, offset: 0 } });
+      ElMessage.success("ma'lumot o'chirildi")
+      current.value = null
+       
+  } catch (error) {
+    console.log(error);
+  }
+};
   
   </script>
   

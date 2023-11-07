@@ -1,6 +1,6 @@
 <template>
   <!-- Width="670px" -->
-  <PopopLayout title="categoriya" :isVisible="item">
+  <PopopLayout title="categoriya" v-if="current" :isVisible="item">
     <template #header>
       <div v-if="current != {}" class="popup-header">
         <div class="status">
@@ -20,18 +20,15 @@
               </button>
             </template>
             <div class="table-action">
-              <button class="edit">
+              <button class="edit" @click="handleClick(current.id)">
                 <svgicon name="edit" />
                 <span>Edit</span>
               </button>
-              <button class="delete">
-                <svgicon name="delete" />
+              <button class="delete"  @click="onDelete(current.id)">
+                <svgicon name="delete"/>
                 <span>Delete</span>
               </button>
-              <button class="view">
-                <svgicon name="eye" />
-                <span>View</span>
-              </button>
+            
             </div>
           </el-popover>
         </div>
@@ -65,12 +62,27 @@
 <script setup>
 import PopopLayout from "@/components/popup/layout.vue";
 
-import { defineProps, toRefs, watch, ref, reactive } from 'vue';
+import { defineProps, toRefs, watch, ref } from 'vue';
 import { useRouter } from 'vue-router';
-
+import { useStore } from "vuex";
 const router = useRouter();
 // console.log(router.path);
 
+let current=  ref();
+const store = useStore()
+
+
+const onDelete = async (id) => {
+  try {
+      const data = await store.dispatch("categoryDelete",id)
+      store.dispatch("fetchCategory", { params: { limit: 0, offset: 0 } });
+      ElMessage.success("ma'lumot o'chirildi")
+      current.value = null
+       
+  } catch (error) {
+    console.log(error);
+  }
+};
 const props = defineProps({
   item: {
     type: Object,
@@ -78,11 +90,15 @@ const props = defineProps({
   },
 });
 const { item } = toRefs(props);
-let current=  reactive({});
 watch(item,(newValue,oldValue)=>{
-  current = newValue.status
+  current.value = newValue.status
 })
 
+const handleClick = (id)=>{
+  current.value = null
+
+  router.push(`/cabinet/admin/category/${id}`)
+}
 
 
 </script>

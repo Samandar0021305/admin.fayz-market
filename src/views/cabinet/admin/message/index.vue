@@ -95,6 +95,7 @@
       count.value = res.count
       lists.value = res.results
       loading.value = false
+      console.log(res.data);
     })
   })
   

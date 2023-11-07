@@ -176,16 +176,21 @@ const submitForm = async (formEl) => {
    if (!formEl) return
    await formEl.validate((valid, fields) => {
       if (valid) {
-         textarea.value = textarea.value.split("-")
-         ruleForm.description = textarea.value;
+         
+         // ruleForm.description = ÷
+         console.log(ruleForm);
           Object.keys(ruleForm).forEach(key=>{
-            formData.append(key,ruleForm[key])
+            if(key == "description"){
+               formData.append("description[]",textarea.value.split("-"))
+            }else{ 
+               formData.append(key,ruleForm[key])
+            }
           });
            
          const res = store.dispatch("productCreate", formData)
          
             ElMessage.success("ma'lumot qo'shildi")
-            router.push("/cabinet/admin/product");
+            // router.push("/cabinet/admin/product");
          
       } else {
          console.log('error submit!', fields)

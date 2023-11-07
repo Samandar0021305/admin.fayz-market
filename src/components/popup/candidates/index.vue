@@ -1,6 +1,6 @@
 <template>
   <!-- Width="670px" -->
-  <PopopLayout title="Candidates" :isVisible="item">
+  <PopopLayout title="Candidates"  v-if="current" :isVisible="item">
     <template #header>
       <div class="popup-header">
         <div class="status">
@@ -19,19 +19,16 @@
                 <svgicon name="dots-horizontal" />
               </button>
             </template>
-            <div class="table-action">
-              <button class="edit">
+            <div class="table-action" v-if="current">
+              <button class="edit"  @click="handleClick(current.id)">
                 <svgicon name="edit" />
                 <span>Edit</span>
               </button>
-              <button class="delete">
+              <button class="delete" @click="onDelete(current.id)">
                 <svgicon name="delete" />
                 <span>Delete</span>
               </button>
-              <button class="view">
-                <svgicon name="eye" />
-                <span>View</span>
-              </button>
+             
             </div>
           </el-popover>
         </div>
@@ -80,7 +77,14 @@
 <script setup>
 import PopopLayout from "@/components/popup/layout.vue";
 
-import { defineProps, toRefs } from "vue";
+
+import { useStore } from "vuex";
+import { defineProps, toRefs, watch, ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const store = useStore()
 
 const props = defineProps({
   item: {
@@ -88,8 +92,32 @@ const props = defineProps({
     default: null,
   },
 });
+
+const onDelete = async (id) => {
+  try {
+      const data = await store.dispatch("adminDelete",id)
+      store.dispatch("fetchBrands", { params: { limit: 0, offset: 0 } });
+      ElMessage.success("ma'lumot o'chirildi")
+      current.value = null
+       
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
 const { item } = toRefs(props);
-console.log(item)
+
+let current=  ref();
+watch(item,(newValue,oldValue)=>{
+  current.value = newValue.status
+})
+
+const handleClick = (id)=>{
+  current.value = null
+  router.push(`/cabinet/admin/admin/${id}`)
+}
+
 </script>
 
 <style lang="scss" scoped></style>

@@ -120,7 +120,7 @@ const submitForm = async (formEl) => {
       Object.keys(form).forEach((key) => {
         fd.append(key, form[key]);
       })
-     
+     console.log(form);
     const res = await store.dispatch("createCategory" , fd)      
    
     resetForm()

@@ -1,4 +1,4 @@
-import { getBrands , createBrands, deleteBrands ,upditeBrands,getbyBrands} from "../module/brends.api"
+import { getBrands , createBrand, deleteBrands ,upditeBrands,getbyBrands} from "../module/brends.api"
  
  const brands = {
     state(){
@@ -76,7 +76,7 @@ import { getBrands , createBrands, deleteBrands ,upditeBrands,getbyBrands} from 
         async createBrands(_,form){
           return new Promise(async (resolve,reject)=>{
             try{
-               const res = await createBrands(form);
+               const res = await createBrand(form);
                resolve({status:true})
              }catch(c){
                reject({
