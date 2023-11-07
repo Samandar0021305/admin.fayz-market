@@ -106,9 +106,9 @@ const onChange = (event)=>{
         const value1 = event.target.files[0]
         console.log("sda",value1);
         if(value1){
+          const reder = new FileReader();
+          reder.onload=(e)=>{
           form.image = value1
-        const reder = new FileReader();
-        reder.onload=(e)=>{
          upload.value = e.target.result
         }
         reder.readAsDataURL(value1)
