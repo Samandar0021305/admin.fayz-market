@@ -33,20 +33,22 @@
                       </el-select>
                    </el-form-item>
                 </el-col>
+                <br />
+                <el-col v-if="ruleForm.images?.length" :span="8" v-for="(image, index) in ruleForm.images" :key="index">
+                     <picture class="uploader">
+                        <img :src="FILE_URL+image.photo" alt="Uploaded Image" />
+                     </picture>
+                  </el-col>
+              </el-row>
                 
-                <el-col :span="8" :md="8" :sm="12" :xs="20">
+                <el-col  :md="17" :sm="12" :xs="20">
                 <el-form-item label="Ommabop" prop="is_famous">
                     <el-checkbox label="Ommabop" name="type" v-model="ruleForm.is_famous"/>
                 </el-form-item>
               </el-col>
  
 
-              <el-col v-if="ruleForm.images?.length" :span="4" v-for="(image, index) in ruleForm.images" :key="index">
-                     <picture class="uploader">
-                        <img :src="FILE_URL+image.photo" alt="Uploaded Image" />
-                     </picture>
-                  </el-col>
-              </el-row>
+              
  
             <div style="display: flex;justify-content: end; width:100%;" class="pages-btn">
              <el-button class="btn--cancel" @click="resetForm(ruleFormRef)">Cancel</el-button>
