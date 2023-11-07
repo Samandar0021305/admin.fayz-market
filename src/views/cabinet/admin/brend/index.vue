@@ -23,7 +23,7 @@
               <span>{{ item.name }}</span>
             </td>
             <td width="300px" @click="detail = {status: item}">
-              <span class="image"><img :src="item.image" alt=""></span>
+              <span class="image"><img :src="FILE_URL+item.image" alt=""></span>
             </td>
             <td width="200px">
               <ul class="table--action">
@@ -70,6 +70,7 @@ import CustomTable from "@/components/custom/table.vue";
 import Pagination from "@/components/pagination.vue";
 import { useStore } from "vuex";
 import { useRouter } from 'vue-router';
+const FILE_URL = import.meta.env.VITE_FILE_URL;
 const store = useStore();
 const router = useRouter()
 const loading = ref(true)
