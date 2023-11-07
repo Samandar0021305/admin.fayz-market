@@ -39,6 +39,13 @@
                     <el-checkbox label="Ommabop" name="type" v-model="ruleForm.is_famous"/>
                 </el-form-item>
               </el-col>
+ 
+
+              <el-col v-if="ruleForm.images?.length" :span="4" v-for="(image, index) in ruleForm.images" :key="index">
+                     <picture class="uploader">
+                        <img :src="FILE_URL+image.photo" alt="Uploaded Image" />
+                     </picture>
+                  </el-col>
               </el-row>
  
             <div style="display: flex;justify-content: end; width:100%;" class="pages-btn">
@@ -55,6 +62,7 @@
  import CustomPagesCreate from "@/components/custom/pages/create.vue"
  import {useRoute, useRouter} from "vue-router"
  import { useStore } from 'vuex';
+ const FILE_URL = import.meta.env.VITE_FILE_URL;
 const route = useRoute()
 const store = useStore()
 const router = useRouter()
@@ -94,7 +102,8 @@ const formSize = ref('100%')
     category:{
       name:"",
       is_main:false
-    }
+    },
+    images:[]
  })
  
 
@@ -104,6 +113,7 @@ const formSize = ref('100%')
    Object.keys(ruleForm).forEach(key=>{
      ruleForm[key] = res.data[key];
    })
+   console.log(res.data);
 })
 
  
