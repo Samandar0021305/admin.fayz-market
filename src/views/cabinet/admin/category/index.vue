@@ -108,9 +108,9 @@ const onDelete = async (id) => {
   try {
       const {status} = await store.dispatch("categoryDelete",id)
       await getData();
-     ElMessage.success("ma'lumot o'chirildi")
+     ElMessage.success("Ma'lumot o'chirildi")
   } catch (error) {
-    ElMessage.error("ma'lumot o'chirilmadi xatolik bor qaytadan urinib ko'ring")
+    ElMessage.error("Ma'lumot o'chirilmadi xatolik bor qaytadan urinib ko'ring")
   }
 };
 

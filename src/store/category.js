@@ -60,7 +60,7 @@ import { getCategories , createCategory , deleteCategory ,upditeCategory , getby
                     })
                    }
                 }catch(r){
-                  ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+                  ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
                       reject({
                         status:false
                       })

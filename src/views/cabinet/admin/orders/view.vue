@@ -46,7 +46,7 @@
                             <el-row>
                                 <el-col v-for="(value, index) in data.data.items" :key="index" :span="6" class="cards--box">
                                     <el-card class="cards--wrapper" :body-style="{ padding: '0px' }">
-                                        <img :src="value.product.images" class="cards--wrapper--image" />
+                                        <img :src="'https://api.fayz-market.uz'+value.product.images" class="cards--wrapper--image" />
                                         <div>
 
                                             <h5 class="cards--wrapper--name">{{ value.product.name }}</h5>

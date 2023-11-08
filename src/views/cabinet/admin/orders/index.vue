@@ -121,12 +121,12 @@ const onDelete = async (id) => {
     const {status} = await store.dispatch("OrderAdminDelete",id);
     store.dispatch("fetchOrderAdmin");
     if(status){
-      ElMessage.success("ma'lumot o'chirildi")
+      ElMessage.success("Ma'lumot o'chirildi")
     }
    
   } catch (error) {
     console.log(error);
-    ElMessage.error("xatolik yuz berdi")
+    ElMessage.error("Xatolik yuz berdi")
   }
 };
 

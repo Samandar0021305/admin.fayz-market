@@ -132,17 +132,17 @@ const submitForm = async (formEl) => {
 
     try{
       const res = await store.dispatch("createBrands",fd)
-      ElMessage.success("ma'lumot qo'shildi")
+      ElMessage.success("Ma'lumot qo'shildi")
 
       router.push("/cabinet/admin/brend")
     }catch{
-      ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+      ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
 
     }
       
     } else {
       
-      ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+      ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
   
     }
   });

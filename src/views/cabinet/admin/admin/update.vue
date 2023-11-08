@@ -213,13 +213,13 @@ import { useRoute ,useRouter} from "vue-router";
 
         const {status} = await store.dispatch("adminUpdate",{id:route.params.id,data:form})
         if(!status){
-          ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+          ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
         }else{
-        ElMessage.success("ma'lumot yangilandi")
+        ElMessage.success("Ma'lumot yangilandi")
         router.push("/cabinet/admin/admin")
         }
       } else {
-        ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+        ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
       }
     });
   };

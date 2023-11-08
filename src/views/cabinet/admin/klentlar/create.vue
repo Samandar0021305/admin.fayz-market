@@ -191,13 +191,13 @@ import { useRouter} from "vue-router";
         router.push("/cabinet/admin/klentlar")
         if(!res.status){
           
-          ElMessage.success("ma'lumot qo'shildi")
+          ElMessage.success("Ma'lumot qo'shildi")
         }else{
          
-        ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+        ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
         }
       } else {
-        ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+        ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
       }
     });
   };

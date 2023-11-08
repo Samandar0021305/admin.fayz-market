@@ -39,7 +39,7 @@
         <el-row :gutter="60">
           <el-col :md="10" :sm="10" :xs="20" class="right-line">
             <div class="image">
-              <img :src="current.image" :alt="item.title" />
+              <img :src="'https://api.fayz-market.uz'+current.image" :alt="item.title" />
             </div>
             
             <a :href="item.url" target="_blank">{{item.url}}</a>
@@ -76,7 +76,7 @@ const onDelete = async (id) => {
   try {
       const data = await store.dispatch("categoryDelete",id)
       store.dispatch("fetchCategory", { params: { limit: 0, offset: 0 } });
-      ElMessage.success("ma'lumot o'chirildi")
+      ElMessage.success("Ma'lumot o'chirildi")
       current.value = null
        
   } catch (error) {

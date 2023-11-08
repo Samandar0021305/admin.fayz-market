@@ -15,6 +15,7 @@ import {OrderAdmin} from "./OrderAdmin";
 import districts from "./districts";
 import regions from "./regions";
 import chart from "./chartStore";
+import imagesProduct from "./images";
 
 const store = createStore({
   modules: {
@@ -33,7 +34,8 @@ const store = createStore({
     OrderAdmin,
     districts,
     regions,
-    chart
+    chart,
+    imagesProduct
   },
 });
 export default store;

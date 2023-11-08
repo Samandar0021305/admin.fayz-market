@@ -110,11 +110,11 @@
        lists.value = res.results
       
     })
-       ElMessage.success("ma'lumot o'chirildi")
+       ElMessage.success("Ma'lumot o'chirildi")
      
     } catch (error) {
       console.log(error);
-      ElMessage.error("xatolik yuz berdi")
+      ElMessage.error("Xatolik yuz berdi")
     }
   };
   

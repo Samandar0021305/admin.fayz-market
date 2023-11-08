@@ -103,9 +103,9 @@ const submitForm = async (formEl) => {
      
       const {status} = await store.dispatch("updatePayments",{id:route.params.id,data:form})
       if(!status){
-        ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+        ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
       }else{
-      ElMessage.success("ma'lumot yangilandi")
+      ElMessage.success("Ma'lumot yangilandi")
       }
     } else {
       console.log("error submit!", fields);

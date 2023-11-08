@@ -94,10 +94,10 @@ const submitForm = async (formEl) => {
   await formEl.validate(async (valid, fields) => {
     if (valid) {
       const res = await store.dispatch("OrderAdminCreate", { data: form });
-      ElMessage.success("ma'lumot qo'shildi");
+      ElMessage.success("Ma'lumot qo'shildi");
     } else {
       console.log("error submit!", fields);
-      ElMessage.success("ma'lumot qo'shilmadi");
+      ElMessage.success("Ma'lumot qo'shilmadi");
     }
   });
 };

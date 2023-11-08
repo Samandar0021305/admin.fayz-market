@@ -205,13 +205,13 @@
         
         const {status} = await store.dispatch("AdminCreate",form)
         if(!status){
-          ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+          ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
         }else{
-        ElMessage.success("ma'lumot qo'shildi")
+        ElMessage.success("Ma'lumot qo'shildi")
         }
       } else {
 
-        ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+        ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
 
       }
     });

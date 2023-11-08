@@ -1,3 +1,4 @@
+
 .upload {
   
   cursor: pointer;
@@ -108,4 +109,73 @@
     object-fit: contain;
     cursor: pointer;
   }
+}
+
+
+.image-uploader{
+  position: relative;
+  div{
+  
+    display: none;
+    padding-left: 50%;
+    position: absolute;
+    
+  }
+  &-update{
+    display: none;
+    cursor: pointer;
+    font-size: 40px;
+    opacity: 1;
+    svg{
+      width: 150px;
+    height: 150px;
+    path{
+      fill:red;
+    }
+    }
+  }
+  &-delete{
+    display: none;
+    margin-right: 10px;
+    font-size: 40px;
+    opacity: 1;
+    svg{
+      width: 150px;
+    height: 150px;
+    path{
+      fill:red;
+    }
+    }
+  }
+}
+.image-uploader:hover{
+  background-color: yellow !important;
+  opacity: 0.7;
+  div{
+    display: flex;
+  }
+  h6{ 
+  display: none;
+  }
+  p{
+    display: none;
+  }
+  span{
+    display: none;
+  }
+  .icons{
+    display: none;
+  }
+}
+.image-uploader:hover .image-uploader-delete{
+  display: flex;
+  svg{
+    fill{
+      color: red;
+    }
+  }
+}
+
+.image-uploader:hover .image-uploader-update{
+  display: flex;
 }

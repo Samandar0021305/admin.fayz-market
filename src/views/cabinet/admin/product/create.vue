@@ -138,7 +138,7 @@ const ruleForm = reactive({
    name: "",
    price: "",
    is_famous: false,
-   description: [],
+   description: "",
    brand: 0,
    category: 0
 })
@@ -178,10 +178,10 @@ const submitForm = async (formEl) => {
       if (valid) {
          
          // ruleForm.description = ÷
-         console.log(ruleForm);
+    
           Object.keys(ruleForm).forEach(key=>{
             if(key == "description"){
-               formData.append("description[]",textarea.value.split("-"))
+               formData.append("description",textarea.value.split("-"))
             }else{ 
                formData.append(key,ruleForm[key])
             }
@@ -189,12 +189,12 @@ const submitForm = async (formEl) => {
            
          const res = store.dispatch("productCreate", formData)
          
-            ElMessage.success("ma'lumot qo'shildi")
-            // router.push("/cabinet/admin/product");
+            ElMessage.success("Ma'lumot qo'shildi")
+            router.push("/cabinet/admin/product");
          
       } else {
-         console.log('error submit!', fields)
-         ElMessage.error("ma'lumot hato qayta harakat qilib ko'ring")
+         
+         ElMessage.error("Ma'lumot hato qayta harakat qilib ko'ring")
          
       }
    })

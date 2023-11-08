@@ -108,6 +108,7 @@ const count = computed(()=>{
 
 onMounted(async() => {
     await getData()
+    console.log(lists);
 });
 
 const onDeleting = ref(false);
@@ -117,7 +118,7 @@ const onDelete = async (id) => {
   try {
       const data = await store.dispatch("productDelete",id)
       store.dispatch("fetchProduct", { params: { limit: 0, offset: 0 } });
-      ElMessage.success("ma'lumot o'chirildi")
+      ElMessage.success("Ma'lumot o'chirildi")
        
   } catch (error) {
     console.log(error);

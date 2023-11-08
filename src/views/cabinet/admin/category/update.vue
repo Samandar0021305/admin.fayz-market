@@ -146,10 +146,10 @@ const submitForm = async (formEl) => {
        })
       const res = await store.dispatch("upditecat",{id:route.params.id,form:fd})
 
-      ElMessage.success("ma'lumot yangilandi")
+      .success("Ma'lumot yangilandi")
       router.push("/cabinet/admin/category")
     } else {
-      ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+      ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
     }
   });
 };

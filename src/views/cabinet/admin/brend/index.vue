@@ -115,11 +115,11 @@ const onDelete = async (id) => {
   try {
     const {status} = await store.dispatch("brandDelete",id)
      await getData();
-    ElMessage.success("ma'lumot o'chirildi")
+    ElMessage.success("Ma'lumot o'chirildi")
     }
      catch (error) {
     console.log(error);
-    ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+    ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
   }
 };
 

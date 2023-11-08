@@ -50,7 +50,7 @@ import { getUsers ,deleteUsers ,createUsers, getbyidUsers , updateUsers} from ".
                    resolve({status:true})
                 }catch(e){
                     reject({status:false})
-                    ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+                    ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
 
                 }
             })

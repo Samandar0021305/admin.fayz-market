@@ -82,11 +82,11 @@ const submitForm = async (formEl) => {
           router.push("/cabinet/admin/statistics");
         } 
       } catch (error) {
-        ElMessage.error("phone_number or password is wrong!");
+        ElMessage.error("Telefon raqam yoki parol xato");
      
       }
     } else {
-      ElMessage.error("phone_number or password is wrong!");
+      ElMessage.error("Telefon raqam yoki parol xato");
     }
   });
 };

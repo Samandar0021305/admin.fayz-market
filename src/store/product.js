@@ -28,18 +28,16 @@ const product = {
       return new Promise(async (resolve,reject)=>{
         try{
            const value = await getByIdProduct(id)
-
             resolve({status:true,data:value})
         }catch(r){
             reject({status:false})
         }   
     })
   },
-  async productUpdite(_,{id,form}){
+  async productUpdite(_,{id,formData}){
      return new Promise(async(resolve,reject)=>{
       try{ 
-        
-         const res = await upditeProduct(id,form)
+         const res = await upditeProduct(id,formData)
          resolve({status:true})
       }catch(e){
         reject({status:false})

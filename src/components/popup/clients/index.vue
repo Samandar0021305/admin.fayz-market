@@ -84,7 +84,7 @@ const onDelete = async (id) => {
   try {
       const data = await store.dispatch("productDelete",id)
       store.dispatch("fetchProduct", { params: { limit: 0, offset: 0 } });
-      ElMessage.success("ma'lumot o'chirildi")
+      ElMessage.success("Ma'lumot o'chirildi")
       current.value = null
        
   } catch (error) {

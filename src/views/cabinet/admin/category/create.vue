@@ -124,11 +124,11 @@ const submitForm = async (formEl) => {
     const res = await store.dispatch("createCategory" , fd)      
    
     resetForm()
-    ElMessage.success("ma'lumot qo'shildi")
+    ElMessage.success("Ma'lumot qo'shildi")
     router.push("/cabinet/admin/category")
   } else {
-    console.log("error submit!", fields);
-    ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+   
+    ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
     resetForm()
     }
   });

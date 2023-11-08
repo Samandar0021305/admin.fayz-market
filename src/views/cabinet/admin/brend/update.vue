@@ -127,10 +127,10 @@ const submitForm = async (formEl) => {
         }
        })
       const res = await store.dispatch("upditeBrands",{id:route.params.id,form:dp});
-      ElMessage.success("ma'lumot yangilandi");
+      ElMessage.success("Ma'lumot yangilandi");
       router.push("/cabinet/admin/brend");
     } else {
-      ElMessage.error("xatolik bor qaytadan harakat qilib ko'ring");
+      ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
     }
   });
 };

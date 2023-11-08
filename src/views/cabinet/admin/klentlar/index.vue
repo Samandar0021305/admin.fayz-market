@@ -130,9 +130,9 @@ const onDelete = async (id) => {
   try {
     const res = await store.dispatch("usersDelete",id)
      await getData();
-    ElMessage.success("ma'lumot o'chirildi");
+    ElMessage.success("Ma'lumot o'chirildi");
   } catch{ 
-    ElMessage.error("ma'lumot o'chirilmadi hatolik bor");
+    ElMessage.error("Ma'lumot o'chirilmadi hatolik bor");
   }
 };
 
