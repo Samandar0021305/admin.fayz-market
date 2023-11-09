@@ -16,7 +16,7 @@
             <span>{{ "Telefon raqami" }} </span>
           </th>
           <th>
-            <span>{{ "Tmmumiy narh" }} </span>
+            <span>{{ "Ummumiy narh" }} </span>
           </th>
           <th>
             <span>{{ "Mahsulot soni" }} </span>
