@@ -30,7 +30,7 @@
           <el-col :md="8" :sm="12" :xs="20" class="form--col">
             <el-form-item label="Kategoriya nomi" prop="category.name">
               <el-select
-                v-model="ruleForm.category"
+                v-model="ruleForm.category.name"
                 placeholder="kategoriya nomi"
               >
                 <el-option
@@ -46,7 +46,7 @@
           <el-col :md="8" :sm="12" :xs="20" class="form--col">
             <el-form-item label="brand nomi" prop="brand.name">
               <el-select
-                v-model="ruleForm.brands"
+                v-model="ruleForm.brand.name "
                 placeholder="brand nomini kiriting"
               >
                 <el-option
@@ -284,10 +284,11 @@ const ruleForm = reactive({
   price: "",
   is_famous: false,
   description: "",
-  brands: [],
-  category: [],
+  brand: {},
+  category: {},
   images: [],
 });
+
 
 const setter = new Set();
 const imagesUp = {};
@@ -312,15 +313,18 @@ onMounted(async () => {
     if (key == "description") {
       ruleForm[key] = res.data.description.join(",");
       textarea.value = res.data.description.join("-");
-    } else if (key == "brands" && res.data[key]) {
-      ruleForm[key] = res.data[key];
-      
-    } else if (key == "category" && res.data[category]) {
-      ruleForm[key] = res.data[key];
-    } else {
+    }else if(key == "brand"){
+        ruleForm[key] = res.data[key] || {name:0}
+    } else if(key == "category"){
+      ruleForm[key] = res.data[key] || {name:0}
+
+    }
+    else {
       ruleForm[key] = res.data[key];
     }
   });
+
+  console.log(ruleForm);
 });
 
 const rules = reactive({
@@ -373,13 +377,21 @@ const submitForm = async (formEl) => {
     if (valid) {
       Object.keys(ruleForm).forEach((key) => {
         if (key != "images") {
-          if (!isArray(ruleForm.category) &&  key == "category" ) {
-            formData.append(key, ruleForm[key]);
+          if (key == "category") {
+            if(Number(ruleForm[key]) == ruleForm[key]){
+              formData.append(key, Number(ruleForm[key]));
+              console.log(ruleForm[key]);
+            }else if(ruleForm[key].name && !isNaN(Number(ruleForm[key].name))){
+              formData.append(key, Number(ruleForm[key].name));
+            }
           }
-          if (!isArray(ruleForm.brands) && key == "brands") {
-            formData.append(key, ruleForm[key]);
-            console.log(ruleForm[key])
-          } else if (key != "brands" && key != "category") {
+          if (key == "brand" ) {
+            if(Number(ruleForm[key]) == ruleForm[key]){
+              formData.append(key, Number(ruleForm[key]));
+            }else if(ruleForm[key].name && !isNaN(Number(ruleForm[key].name))){
+              formData.append(key, ruleForm[key].name);
+            }
+          } else if (key != "brand" && key != "category") {
             formData.append(key, ruleForm[key]);
           
           }
@@ -409,7 +421,6 @@ const submitForm = async (formEl) => {
           id: route.params.id,
           formData,
         });
-
         ElMessage.success("Ma'lumot yangilandi");
         router.push("/cabinet/admin/product");
       } catch {
