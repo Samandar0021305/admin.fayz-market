@@ -314,6 +314,7 @@ onMounted(async () => {
       textarea.value = res.data.description.join("-");
     } else if (key == "brands" && res.data[key]) {
       ruleForm[key] = res.data[key];
+      
     } else if (key == "category" && res.data[category]) {
       ruleForm[key] = res.data[key];
     } else {
@@ -372,17 +373,15 @@ const submitForm = async (formEl) => {
     if (valid) {
       Object.keys(ruleForm).forEach((key) => {
         if (key != "images") {
-          if (
-            !isArray(ruleForm.category) &&
-            key == "category" &&
-            ruleForm.category?.length
-          ) {
+          if (!isArray(ruleForm.category) &&  key == "category" ) {
             formData.append(key, ruleForm[key]);
           }
           if (!isArray(ruleForm.brands) && key == "brands") {
             formData.append(key, ruleForm[key]);
+            console.log(ruleForm[key])
           } else if (key != "brands" && key != "category") {
             formData.append(key, ruleForm[key]);
+          
           }
         }
       });
