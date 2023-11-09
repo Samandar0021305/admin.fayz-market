@@ -26,7 +26,7 @@
 
               <el-col :md="8" :sm="12" :xs="20">
                 <el-form-item label="bonus" prop="bonus">
-                  <el-input v-model="form.bonus" placeholder="bonus kiriting" />
+                  <el-input v-model="form.bonus" placeholder="bonus kiriting" type="number"/>
                 </el-form-item>
               </el-col>
 

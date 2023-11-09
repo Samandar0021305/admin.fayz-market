@@ -36,7 +36,7 @@
 
                 <el-col :md="8" :sm="12" :xs="20">
                   <el-form-item label="bonus" prop="bonus">
-                    <el-input v-model="form.bonus" placeholder="bonus kiriting" />
+                    <el-input v-model="form.bonus" placeholder="bonus kiriting" type="number"/>
                   </el-form-item>
                 </el-col>
 
@@ -132,6 +132,7 @@ import { useRouter} from "vue-router";
     
     bonus: [
       {
+        type:Number,
         required: true,
         message: "bonus ni kiriting",
         trigger: "blur",
@@ -187,14 +188,14 @@ import { useRouter} from "vue-router";
     if (!formEl) return;
     await formEl.validate(async(valid, fields) => {
       if (valid) {
-        const res = await store.dispatch("AdminCreate",form)
-        router.push("/cabinet/admin/klentlar")
-        if(!res.status){
-          
+        try{
+          const res = await store.dispatch("AdminCreate",form)
           ElMessage.success("Ma'lumot qo'shildi")
-        }else{
-         
-        ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
+          router.push("/cabinet/admin/klentlar")
+
+        }catch{
+          ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
+
         }
       } else {
         ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
