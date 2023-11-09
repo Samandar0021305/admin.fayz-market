@@ -8,13 +8,13 @@
       >
         <template #header>
           <th>
-            <span>{{ "ismi" }} </span>
+            <span>{{ "Tsmi" }} </span>
           </th>
           <th>
-            <span>{{ "familiyasi" }} </span>
+            <span>{{ "Tamiliyasi" }} </span>
           </th>
           <th>
-            <span>{{ "telefon raqami" }} </span>
+            <span>{{ "Telefon raqami" }} </span>
           </th>
           
           <th>
@@ -22,7 +22,7 @@
           </th>
           
           <th>
-            <span>{{ "holati" }} </span>
+            <span>{{ "Holati" }} </span>
           </th>
           
           <th>

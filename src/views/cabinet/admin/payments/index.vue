@@ -13,13 +13,13 @@
             <span>{{ "Nomi" }} </span>
           </th>
           <th>
-            <span>{{ "telefon raqami" }} </span>
+            <span>{{ "Telefon raqami" }} </span>
           </th>
           <th>
-            <span>{{ "ummumiy narh" }} </span>
+            <span>{{ "Tmmumiy narh" }} </span>
           </th>
           <th>
-            <span>{{ "mahsulot soni" }} </span>
+            <span>{{ "Mahsulot soni" }} </span>
           </th>
           
         </template>

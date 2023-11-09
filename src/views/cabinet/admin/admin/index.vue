@@ -8,10 +8,10 @@
       >
         <template #header>
           <th>
-            <span>{{ "ismi" }} </span>
+            <span>{{ "Ismi" }} </span>
           </th>
           <th>
-            <span>{{ "telefon raqami" }} </span>
+            <span>{{ "Telefon raqami" }} </span>
           </th>
           
           

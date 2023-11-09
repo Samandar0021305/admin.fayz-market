@@ -8,13 +8,13 @@
         >
           <template #header>
             <th>
-              <span>{{ "ismi" }} </span>
+              <span>{{ "Ismi" }} </span>
             </th>
             <th>
-              <span>{{ "comment" }} </span>
+              <span>{{ "Comment" }} </span>
             </th>
             <th>
-              <span>{{ "mahsulot raqami" }} </span>
+              <span>{{ "Mahsulot raqami" }} </span>
             </th>
             <th>
               <span>{{ "Actions" }} </span>

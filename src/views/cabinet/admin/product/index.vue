@@ -32,10 +32,10 @@
               <span>{{ item.price }}</span>
             </td>
             <td @click="detail = {status: item}">
-              <span v-if="item.brand">{{ item.brand.name}}</span>
+              <span v-if="item.brand">{{ item.brand?.name}}</span>
             </td>
             <td @click="detail = {status: item}">
-              <span v-if="item.category">{{ item.category.name}} </span>
+              <span v-if="item.category">{{ item.category?.name}} </span>
             </td>
             <td width="84px">
               <ul class="table--action">
@@ -108,6 +108,7 @@ const count = computed(()=>{
 
 onMounted(async() => {
     await getData()
+    console.log(lists);
 });
 
 const onDeleting = ref(false);

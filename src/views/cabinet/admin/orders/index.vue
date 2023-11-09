@@ -11,17 +11,17 @@
             <span>{{ "Nomi" }} </span>
           </th>
           <th>
-            <span>{{ "telefon raqami" }} </span>
+            <span>{{ "Telefon raqami" }} </span>
           </th>
           <th>
             <span>{{ "Manzil" }} </span>
           </th>
           
           <th>
-            <span>{{ "ummumiy narh" }} </span>
+            <span>{{ "Mmmumiy narh" }} </span>
           </th>
           <th>
-            <span>{{ "mahsulot soni" }} </span>
+            <span>{{ "Mahsulot soni" }} </span>
           </th>
           <th>
             <span>{{ "Actions" }} </span>
