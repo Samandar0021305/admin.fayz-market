@@ -206,6 +206,7 @@
         const {status} = await store.dispatch("AdminCreate",form)
         if(!status){
           ElMessage.error("Xatolik bor qaytadan harakat qilib ko'ring");
+          router.push("/cabinet/admin/admin")
         }else{
         ElMessage.success("Ma'lumot qo'shildi")
         }
