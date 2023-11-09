@@ -108,7 +108,6 @@ const count = computed(()=>{
 
 onMounted(async() => {
     await getData()
-    console.log(lists);
 });
 
 const onDeleting = ref(false);
