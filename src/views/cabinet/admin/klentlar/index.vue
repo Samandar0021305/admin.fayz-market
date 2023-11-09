@@ -41,7 +41,7 @@
               <span class="">{{ item.phone_number }}</span>
             </td>
             <td width="300px" @click="detail = {status: item}">
-              <span class="">{{ item.region }}</span>
+              <span class="">{{ item.region_name }}  {{ item.district_name }}</span>
             </td>
             <td width="300px" @click="detail = {status: item}">
               <span class="">{{ item.is_active == true ? "Active" : "no active" }}</span>
@@ -119,6 +119,7 @@ const count = computed(()=>{
 
 onMounted(async()=>{
  await getData()
+ console.log(lists);
 })
 
 

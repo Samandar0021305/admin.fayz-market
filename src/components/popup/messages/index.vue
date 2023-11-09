@@ -1,6 +1,6 @@
 <template>
   <!-- Width="670px" -->
-  <PopopLayout title="categoriya" v-if="current" :isVisible="item">
+  <PopopLayout title="Kategoriya" v-if="current" :isVisible="item">
     <template #header>
       <div v-if="current != {}" class="popup-header">
         <div class="status">

@@ -281,11 +281,13 @@
 @media (max-width:800px){
   .table{
      overflow: auto;
+     padding-right: 50px;
   }
 }
 
 @media (max-width:450px){
   .table{
-    margin-right: 10px;
+    // margin-right: 10px;
+    padding-right: 70px;
   }
 }

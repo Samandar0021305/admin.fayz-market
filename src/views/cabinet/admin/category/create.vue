@@ -29,7 +29,7 @@
               
               <el-col :md="20" :sm="12" :xs="20">
                 <el-form-item prop="is_main">
-                    <el-checkbox label="type" name="type" v-model="form.is_main"/>
+                    <el-checkbox label="Type" name="type" v-model="form.is_main"/>
                 </el-form-item>
               </el-col>
             </el-row>

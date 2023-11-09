@@ -20,23 +20,23 @@
             <el-row :gutter="30">
               <el-col :md="8" :sm="12" :xs="20">
                 <el-form-item label="Nomi" prop="name">
-                  <el-input v-model="form.name" placeholder="ism kiriting" />
+                  <el-input v-model="form.name" placeholder="Ism kiriting" />
                 </el-form-item>
               </el-col>
 
               <el-col :md="8" :sm="12" :xs="20">
-                <el-form-item label="telefon raqami" prop="phone_number">
+                <el-form-item label="Telefon raqami" prop="phone_number">
                   <el-input
                     v-model="form.phone_number"
-                    placeholder="telefon raqami"
+                    placeholder="Telefon raqami"
                     :mask="9989"
                   />
                 </el-form-item>
               </el-col>
 
               <el-col :md="8" :sm="12" :xs="20">
-                <el-form-item label="manzil" prop="address">
-                  <el-input v-model="form.address" placeholder="manzil" />
+                <el-form-item label="Manzil" prop="address">
+                  <el-input v-model="form.address" placeholder="Manzil" />
                 </el-form-item>
               </el-col>
             </el-row>

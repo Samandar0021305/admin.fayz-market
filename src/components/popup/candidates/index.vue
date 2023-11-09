@@ -1,6 +1,6 @@
 <template>
   <!-- Width="670px" -->
-  <PopopLayout title="Candidates"  v-if="current" :isVisible="item">
+  <PopopLayout title="Adminlar"  v-if="current" :isVisible="item">
     <template #header>
       <div class="popup-header">
         <div class="status">

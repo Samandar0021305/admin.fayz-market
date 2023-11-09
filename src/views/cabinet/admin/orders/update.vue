@@ -15,19 +15,19 @@
             <el-row :gutter="30">
               <el-col :span="8">
                 <el-form-item label="Nomi" prop="name">
-                  <el-input v-model="form.name" placeholder="mahsulot nomi" />
+                  <el-input v-model="form.name" placeholder="Mahsulot nomi" />
                 </el-form-item>
               </el-col>
               
               <el-col :span="8">
-                <el-form-item label="telefon raqami" prop="phone_number">
-                  <el-input v-model="form.phone_number" placeholder="telefon raqami" />
+                <el-form-item label="Telefon raqami" prop="phone_number">
+                  <el-input v-model="form.phone_number" placeholder="Telefon raqami" />
                 </el-form-item>
               </el-col>
               
               <el-col :span="8">
                 <el-form-item label="manzil" prop="address">
-                  <el-input v-model="form.address" placeholder="manzil" />
+                  <el-input v-model="form.address" placeholder="Manzil" />
                 </el-form-item>
               </el-col>
               

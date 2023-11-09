@@ -62,10 +62,10 @@ const menu = {
           id:6,
           icon: "kilent",
           name: {
-            uz: "Klentlar",
-            oz: "Klentlar",
-            ru: "Klentlar",
-            en: "Klentlar",
+            uz: "Mijozlar",
+            oz: "Mijozlar",
+            ru: "Mijozlar",
+            en: "Mijozlar",
           },
           path: "/cabinet/admin/klentlar"
         },

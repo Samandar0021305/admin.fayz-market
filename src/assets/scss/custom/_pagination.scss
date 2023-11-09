@@ -73,3 +73,16 @@
     margin-left: 12px;
   }
 }
+
+
+@media screen and (max-width:600px) {
+   .pagination{
+    margin: 0 ;
+    margin-right: auto ;
+    margin-top: 10px;
+   }
+   .showcase{
+    margin: 0;
+    margin-right: auto;
+   }
+}

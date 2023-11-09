@@ -15,31 +15,31 @@
             <el-col :span="24">
               <el-row :gutter="30">
                 <el-col :md="8" :sm="12" :xs="20">
-                  <el-form-item label="ism" prop="firstname">
+                  <el-form-item label="Ism" prop="firstname">
                     <el-input v-model="form.firstname" placeholder="ismingizni kiriting" />
                   </el-form-item>
                 </el-col>
 
                 <el-col :md="8" :sm="12" :xs="20">
-                  <el-form-item label="familiya" prop="lastname">
+                  <el-form-item label="Familiya" prop="lastname">
                     <el-input v-model="form.lastname" placeholder="familiyangizni kiriting" />
                   </el-form-item>
                 </el-col>
 
                 <el-col :md="8" :sm="12" :xs="20">
-                  <el-form-item label="telefon raqam" prop="phone_number">
+                  <el-form-item label="Telefon raqam" prop="phone_number">
                     <el-input v-model="form.phone_number" placeholder="tel raqam kiriting" />
                   </el-form-item>
                 </el-col>
 
                 <el-col :md="8" :sm="12" :xs="20">
-                  <el-form-item label="bonus" prop="bonus">
+                  <el-form-item label="Bonus" prop="bonus">
                     <el-input v-model="form.bonus" placeholder="bonus kiriting" type="number" />
                   </el-form-item>
                 </el-col>
 
                 <el-col :md="8" :sm="12" :xs="20" class="form--col">
-                   <el-form-item label="viloyat" prop="region">
+                   <el-form-item label="Viloyat" prop="region">
                       <el-select v-model="form.region"  placeholder="viloyatingizni kiriting">
                          <el-option v-for="b in regions" :label="b.name" :value="b.id"  :key="b.id"/>
                       </el-select>
@@ -48,7 +48,7 @@
 
                
                 <el-col :md="8" :sm="12" :xs="20" class="form--col">
-                   <el-form-item label="shahar" prop="district">
+                   <el-form-item label="Shahar" prop="district">
                       <el-select v-model="form.district"  placeholder="shaharingizni kiriting">
                          <el-option v-for="b in district" :label="b.name" :value="b.id"  :key="b.id"/>
                       </el-select>
