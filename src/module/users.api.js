@@ -4,8 +4,8 @@ const usersEndpoints = {
     list:"users/"
 }
 
-export const getUsers = async(param)=>
-  await ConfigApi.get(usersEndpoints.list,{param});
+export const getUsers = async({params})=>
+  await ConfigApi.get(usersEndpoints.list,{params});
 
 export const deleteUsers = async(id)=>
  await ConfigApi.delete(usersEndpoints.list + `${id}/`)

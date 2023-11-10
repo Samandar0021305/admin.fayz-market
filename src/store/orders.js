@@ -15,7 +15,7 @@ const orders = {
     async fetchOrders({ commit }, { params }) {
         return new Promise(async (resolve,reject)=>{
             try{
-                let res = await getOrder(params);
+                let res = await getOrder({params});
                 if(res){
                     
                     commit("setState",{key:"list",value:res.results});

@@ -4,8 +4,8 @@ const OrderAdminEindpost = {
     list:"order-admin/"
 }
 
-export const getOrderAdmin = async()=>
-  await ConfigApi.get(OrderAdminEindpost.list)
+export const getOrderAdmin = async({params})=>
+  await ConfigApi.get(OrderAdminEindpost.list,{params})
 
 
 export const deleteOrderAdmin = async(id)=>

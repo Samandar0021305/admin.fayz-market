@@ -8,10 +8,10 @@
       >
         <template #header>
           <th>
-            <span>{{ "Tsmi" }} </span>
+            <span>{{ "Ismi" }} </span>
           </th>
           <th>
-            <span>{{ "Tamiliyasi" }} </span>
+            <span>{{ "Familiyasi" }} </span>
           </th>
           <th>
             <span>{{ "Telefon raqami" }} </span>
@@ -66,7 +66,7 @@
     <template #footer>
       <div class="showcase">
         <span v-if="count <= 10">{{$t("showing")}} 1 - {{ count }} {{$t("of")}} {{ count }}</span>
-        <span v-else>{{$t("showing")}} 1 - 10 {{$t("of")}} {{ count }}</span>
+        <span v-else>{{$t("showing")}} 1 - 8 {{$t("of")}} {{ count }}</span>
       </div>
 
       
@@ -104,7 +104,7 @@ const paginate = async (page) => {
 };
 
 const params = reactive({
-  limit: 10,
+  limit: 8,
   offset: 0,
 });
 

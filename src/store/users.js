@@ -22,7 +22,7 @@ import { getUsers ,deleteUsers ,createUsers, getbyidUsers , updateUsers} from ".
         async fetchUsers({commit},{params}){
             return new Promise(async (resolve,reject)=>{
                 try{
-                  const data = await getUsers(params);
+                  const data = await getUsers({params});
                    commit("SETUSERS",{key:"list",value:data.results})
                    commit("SETUSERS",{key:"count",value:data.count})
                    resolve({status:true});

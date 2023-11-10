@@ -64,7 +64,7 @@
                 <span>Information</span>
               </div>
               <div class="content payments--wrap">
-                  <span>Manzil : {{ current.region || "Tashkent" }}</span>
+                  <span>Manzil : {{ current.region_name }}</span>
               </div>
             </li>
           </ul>

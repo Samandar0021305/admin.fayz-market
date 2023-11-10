@@ -4,7 +4,7 @@ const adminEndpoints = {
     list:"admins/"
 }
 
-export const getAdmin = async(params)=>
+export const getAdmin = async({params})=>
  await ConfigApi.get(adminEndpoints.list,{params});
  
 export const deleteAdmin = async(id)=>

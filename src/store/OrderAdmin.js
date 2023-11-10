@@ -17,10 +17,10 @@ export const OrderAdmin = {
  },
 
  actions:{
-    async fetchOrderAdmin({commit},param){
+    async fetchOrderAdmin({commit},{params}){
         return new Promise(async(resolve,reject)=>{
             try{
-               const res = await getOrderAdmin();
+               const res = await getOrderAdmin({params})
                 commit("SETORDERADMIN",{key:"list",value:res.results})
                 commit("SETORDERADMIN",{key:"count",value:res.count})
                 resolve({status:true});

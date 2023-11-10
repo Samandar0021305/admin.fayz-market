@@ -375,6 +375,9 @@ const submitForm = async (formEl) => {
   if (!formEl) return;
   await formEl.validate(async (valid, fields) => {
     if (valid) {
+     
+     try{
+
       Object.keys(ruleForm).forEach((key) => {
         if (key != "images") {
           if (key == "category") {
@@ -401,7 +404,7 @@ const submitForm = async (formEl) => {
       const photo = new FormData();
       Object.keys(imagesUp).forEach(async (values) => {
         photo.append("photo", imagesUp[values]);
-        console.log(imagesUp[values]);
+        
         try {
           const cur = await ConfigApi.patch(`product-images/${values}/`, photo);
           photo.delete();
@@ -416,16 +419,22 @@ const submitForm = async (formEl) => {
         } catch {}
       });
 
-      try {
+      
         const res = store.dispatch("productUpdite", {
           id: route.params.id,
           formData,
         });
+
         ElMessage.success("Ma'lumot yangilandi");
         router.push("/cabinet/admin/product");
-      } catch {
-        ElMessage.error("Ma'lumot qo'shilmadi");
-      }
+
+     }catch{
+      ElMessage.error("Ma'lumot yangilanmadi");
+
+     }
+      
+        
+     
     } else {
       ElMessage.error("Ma'lumot qo'shilmadi");
     }

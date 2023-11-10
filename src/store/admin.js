@@ -16,10 +16,10 @@ import {getAdmin ,deleteAdmin ,  createAdmin ,updateAdmin, getbyidAdmin} from ".
     },
    
     actions:{
-         async fetchAdmin({commit},{param}){
+         async fetchAdmin({commit},{params}){
            return new Promise(async(resolve,reject)=>{
              try{
-             const res = await getAdmin(param);
+             const res = await getAdmin({params});
              if(res){
                 commit("SETADMIN",{key:"list",value:res.results})
                 commit("SETADMIN",{key:"count",value:res.count})

@@ -47,7 +47,7 @@
         </template>
       </CustomTable>
     </template>
-    <template #footer>
+    <!-- <template #footer>
       <div class="showcase">
         <span v-if="count <= 10">{{$t("showing")}} 1 - {{ count }} {{$t("of")}} {{ count }}</span>
         <span v-else>{{$t("showing")}} 1 - 10 {{$t("of")}} {{ count }}</span>
@@ -59,7 +59,7 @@
         :page="1"
         @paginate="paginate"
  />
-    </template>
+    </template> -->
   </CustomPages>
   <PopopPrtfolio :item="detail" />
 
@@ -99,14 +99,13 @@ const paginate = async (page) => {
 };
 
 const params = reactive({
-  limit: 10,
+  limit: 8,
   offset: 0,
 });
 
 
 onMounted(async() => {
    await getData()
-   console.log(lists);
 });
 
 
@@ -135,7 +134,7 @@ const handleClick = (id)=>{
  }
  const getData = async () => {
   loading.value = true;
-  await store.dispatch("fetchBrands", { params: params });
+  await store.dispatch("fetchBrands", {  });
   loading.value = false;
 };
 
