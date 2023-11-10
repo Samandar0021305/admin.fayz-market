@@ -62,9 +62,9 @@
                   <span>Information</span>
                 </div>
                 <div class="content payments--wrap" style="margin-top: 10px;" >
-                    <span>soni :  {{ current.overall_num_of_products }}</span>
-                    <span>ummumiy narhi : {{ current.overall_cost  }}</span>
-                    <span>manzil : {{ current.address }}</span>
+                    <span>Soni :  {{ current.overall_num_of_products }}</span>
+                    <span>Ummumiy narxi : {{ current.overall_cost  }}</span>
+                    <span>Manzil : {{ current.address }}</span>
                 </div>
               </li>
             </ul>

@@ -16,10 +16,10 @@
             <span>{{ "Telefon raqami" }} </span>
           </th>
           <th>
-            <span>{{ "Ummumiy narh" }} </span>
+            <span>{{ "Ummumiy narx" }} </span>
           </th>
           <th>
-            <span>{{ "Mahsulot soni" }} </span>
+            <span>{{ "Mahsulot Soni" }} </span>
           </th>
           
         </template>

@@ -1,5 +1,5 @@
 <template>
-  <CustomPagesUpdate title="brend" pathToBack="/cabinet/admin/brend" @activeLangTab="activeLangTab">
+  <CustomPagesUpdate title="Brend" pathToBack="/cabinet/admin/brend" @activeLangTab="activeLangTab">
     <template #default>
       
       <el-form

@@ -36,7 +36,7 @@
                 <button>
                     <svgicon name="user-time" />
                 </button>
-                <span>Ummumiy mijozlar soni</span>
+                <span>Ummumiy mijozlar Soni</span>
                 <strong class="big">{{ users }}</strong>
             </div>
         </el-col>
@@ -46,7 +46,7 @@
                 <button>
                     <svgicon name="mahsulotlar" />
                 </button>
-                <span>Ummumiy mahsulotlar soni</span>
+                <span>Ummumiy mahsulotlar Soni</span>
                 <strong class="big">{{ product }}</strong>
             </div>
         </el-col>

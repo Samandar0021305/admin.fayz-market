@@ -86,7 +86,7 @@ const rules = reactive({
   phone_number: [
     { required: true, message: "telefon raqam kiriting", trigger: "blur" },
   ],
-  address: [{ required: true, message: "manzil kiriting", trigger: "blur" }],
+  address: [{ required: true, message: "Manzil kiriting", trigger: "blur" }],
 });
 
 const submitForm = async (formEl) => {

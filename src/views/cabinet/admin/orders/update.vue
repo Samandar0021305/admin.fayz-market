@@ -26,7 +26,7 @@
               </el-col>
               
               <el-col :span="8">
-                <el-form-item label="manzil" prop="address">
+                <el-form-item label="Manzil" prop="address">
                   <el-input v-model="form.address" placeholder="Manzil" />
                 </el-form-item>
               </el-col>
@@ -102,7 +102,7 @@ address:[
 {
     required: true,
     trigger: "blur",
-    message:"manzilingizni kiriting"
+    message:"Manzilingizni kiriting"
   },
 ]
 });

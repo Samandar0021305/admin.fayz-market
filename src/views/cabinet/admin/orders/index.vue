@@ -18,10 +18,10 @@
           </th>
           
           <th>
-            <span>{{ "Mmmumiy narh" }} </span>
+            <span>{{ "Umumiy narx" }} </span>
           </th>
           <th>
-            <span>{{ "Mahsulot soni" }} </span>
+            <span>{{ "Mahsulot Soni" }} </span>
           </th>
           <th>
             <span>{{ "Actions" }} </span>
