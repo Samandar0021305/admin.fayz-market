@@ -57,7 +57,7 @@
                     <svgicon name="mahsulotlar" />
                 </button>
                 <span>Oylik tushgan umumiy summa </span>
-                <strong class="big">{{ overflowProduct }}</strong>
+                <strong class="big">{{ coast }}</strong>
             </div>
         </el-col>
 <!-- 
@@ -95,7 +95,9 @@ const product = computed(()=>{
 })
 
 
-
+const coast = computed(()=>{
+  return store.getters.getCoast;
+})
  
 const ColumnCharts = computed(()=>{
   return store.getters.getColumnCharts
@@ -109,9 +111,11 @@ onMounted(()=>{
   store.dispatch("fetchChart","weekly"),
   store.dispatch("fetchProduct",{}),
   store.dispatch("fectPayments",{}),
-  store.dispatch("fetchChart",localStorage.getItem("time"))
+  // store.dispatch("fetchChart",localStorage.getItem("time"))
   ]).finally(()=>{
     loading.value = false;
+  
+    console.log(ColumnCharts);
   })
 })
 
@@ -121,7 +125,7 @@ const handleClick = (event)=>{
   if(event.paneName == 1){
     store.dispatch("fetchChart","weekly")
   }else if(event.paneName == 2){
-    store.dispatch("fetchChart","weekly")
+    store.dispatch("fetchChart","monthly")
   }else if(event.paneName == 3){
     store.dispatch("fetchChart","daily")
   }else if(event.paneName == 4){

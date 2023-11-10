@@ -118,12 +118,10 @@ onMounted(async()=>{
 
 const onDelete = async (id) => {
   try {
-    const {status} = await store.dispatch("OrderAdminDelete",id);
-    store.dispatch("fetchOrderAdmin");
-    if(status){
+    const res = await store.dispatch("OrderAdminDelete",id);
+     await getData();
       ElMessage.success("Ma'lumot o'chirildi")
-    }
-   
+    
   } catch (error) {
     console.log(error);
     ElMessage.error("Xatolik yuz berdi")

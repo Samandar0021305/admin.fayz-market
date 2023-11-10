@@ -67,8 +67,8 @@
                   <span>Information</span>
                 </div>
                 <div class="content payments--wrap">
-                    <span>Soni : {{ current.overall_cost  }}</span>
-                    <span>Ummumiy narxi : {{ current.overall_num_of_products }}</span>
+                    <span>Soni : {{ current.overall_num_of_products }}  </span>
+                    <span>Ummumiy narxi : {{ current.overall_cost  }}</span>
                 </div>
               </li>
             </ul>

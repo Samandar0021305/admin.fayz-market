@@ -8,10 +8,20 @@ const chart =  {
   getters:{
     getColumnCharts(state){
       return state.ColumnCharts
+    },
+    getCoast(state){
+      return state.caost
     }
   },
 
   mutations:{
+    SET_COAST(state,res){
+      let sum = 0;
+      for(let item of res){
+       sum+=item.overall_cost
+      }
+     state.caost = sum
+    },
    SET_ORDERMONTH(state,res){
     let ColumnCharts = {
       series: [{
@@ -53,10 +63,14 @@ const chart =  {
       }
     }
 
+    const map = new Set();
     res.forEach(item=>{
-           for(let val in item.product){
+      for(let val in item.product){
+           if(!map.has(val)){
+            ColumnCharts.chartOptions.xaxis.categories.push(`${val}`.slice(0,10))
              ColumnCharts.series[0].data.push(item.product[val]);
-             ColumnCharts.chartOptions.xaxis.categories.push(`${val}`.slice(0,10))
+             map.add(val);
+             }
            } 
     })
 
@@ -71,6 +85,8 @@ const chart =  {
         try{
           const res = await getOrderMonth(param);
           commit("SET_ORDERMONTH",res)
+          console.log(res);
+          commit("SET_COAST",res)
           resolve({status:true})
         }catch{
          reject({status:false})

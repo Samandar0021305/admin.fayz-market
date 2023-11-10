@@ -37,7 +37,7 @@ const payments = {
                const res = await deletePayments(id)
                resolve({status:true})
             }catch(e){
-                resolve({status:fase})
+              reject({status:fase})
             }
           })
         },
