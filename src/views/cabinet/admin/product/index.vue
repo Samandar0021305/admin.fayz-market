@@ -11,6 +11,9 @@
             <span>{{ "Name" }} </span>
           </th>
           <th>
+            <span>{{ "Rasmi" }} </span>
+          </th>
+          <th>
             <span>{{ "Narxi" }} </span>
           </th>
           <th>
@@ -27,6 +30,9 @@
           <tr v-for="(item, index) in lists" :key="item.id">
             <td @click="detail = {status: item}">
               <span>{{ item?.name }}</span>
+            </td>
+            <td @click="detail = {status: item}">
+               <span class="image" v-if="item.images"><img :src="'https://api.fayz-market.uz'+item.images[0].photo"/></span>
             </td>
             <td @click="detail = {status: item}">
               <span>{{ item.price }}</span>

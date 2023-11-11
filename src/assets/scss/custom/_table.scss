@@ -76,6 +76,7 @@
           line-height: 18px;
           color: $black1;
           text-align: start;
+          text-overflow: ellipsis;
 
           &.center{
             text-align: center;
